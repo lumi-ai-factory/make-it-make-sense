@@ -1,0 +1,1268 @@
+[
+  {
+    "file": "index.md",
+    "title": "LUMI AI Factory | Accelerating Europe’s AI Innovation",
+    "url": "https://lumi-ai-factory.eu/",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-lumi-ai-factory-onboarding.md",
+    "title": "LUMI AI Factory onboarding | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/lumi-ai-factory-onboarding",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-is-your-data-ready-for-ai-and-hpc.md",
+    "title": "Is your data ready for AI and HPC? | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/is-your-data-ready-for-ai-and-hpc",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-agentic-ai-beyond-coding-assistants-and-chatbots.md",
+    "title": "Agentic AI: Beyond coding assistants and chatbots | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/agentic-ai-beyond-coding-assistants-and-chatbots",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-lumi-ai-factory-open-weight-large-language-model-hackathon.md",
+    "title": "LUMI AI Factory Open Weight Large Language Model Hackathon | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/lumi-ai-factory-open-weight-large-language-model-hackathon",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-building-llm-agents.md",
+    "title": "Building LLM agents | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/building-llm-agents",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-agentic-ai-design-using-amd-technology.md",
+    "title": "Agentic AI Design using AMD Technology | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/agentic-ai-design-using-amd-technology",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-moving-your-ai-training-jobs-to-lumi-a-hands-on-workshop-2.md",
+    "title": "Moving your AI training jobs to LUMI: A hands-on workshop | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/moving-your-ai-training-jobs-to-lumi-a-hands-on-workshop-2",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-vision-models-use-cases-with-ai.md",
+    "title": "Vision models use cases with AI | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/vision-models-use-cases-with-ai",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-introduction-to-quantum-computing.md",
+    "title": "Introduction to quantum computing | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/introduction-to-quantum-computing",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-quantum-machine-learning-2.md",
+    "title": "Quantum machine learning | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/quantum-machine-learning-2",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-practical-deep-learning-3.md",
+    "title": "Practical deep learning | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/practical-deep-learning-3",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-earth-observation-use-cases-with-ai.md",
+    "title": "Earth observation use cases with AI | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/earth-observation-use-cases-with-ai",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-ai-ready-data-and-fair-data-management-for-industry.md",
+    "title": "AI‑ready data and FAIR data management for industry | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/ai-ready-data-and-fair-data-management-for-industry",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-lumi-ai-guide.md",
+    "title": "LUMI AI Guide | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/lumi-ai-guide",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-high-performance-data-analytics-with-python.md",
+    "title": "High-Performance Data Analytics with Python | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/high-performance-data-analytics-with-python",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-github-gitlab-repositories.md",
+    "title": "Securing GitHub & GitLab Repositories in the Era of Supply Chain Attacks and AI Agents | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/github-gitlab-repositories",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-introduction-to-engineering-of-machine-learning-systems.md",
+    "title": "Introduction to Engineering of Machine Learning systems | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/introduction-to-engineering-of-machine-learning-systems",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-reproducibility-and-open-science-practices-in-machine-learning.md",
+    "title": "Reproducibility and open science practices in machine learning | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/reproducibility-and-open-science-practices-in-machine-learning",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-lumi-ai-factory-dataset-as-a-service-how-to-get-started.md",
+    "title": "LUMI AI Factory Dataset-as-a-Service – how to get started | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/lumi-ai-factory-dataset-as-a-service-how-to-get-started",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-moving-your-ai-training-jobs-to-lumi-a-hands-on-workshop.md",
+    "title": "Moving your AI training jobs to LUMI: A hands-on workshop | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/moving-your-ai-training-jobs-to-lumi-a-hands-on-workshop",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-lumi-smartsim-workshop.md",
+    "title": "LUMI SmartSim Workshop | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/lumi-smartsim-workshop",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-lumi-ai-software-environment-webinar.md",
+    "title": "LUMI AI Software Environment webinar | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/lumi-ai-software-environment-webinar",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-practical-deep-learning-2.md",
+    "title": "Practical Deep Learning | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/practical-deep-learning-2",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-building-robust-industrial-ai-solutions-addressing-real-world-challenges-with-matlab-hpc.md",
+    "title": "Building Robust Industrial AI Solutions: Addressing Real-World Challenges with MATLAB & HPC | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/building-robust-industrial-ai-solutions-addressing-real-world-challenges-with-matlab-hpc",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-lumi-related-training.md",
+    "title": "LUMI related training opportunities | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/lumi-related-training",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-coderefinery-workshop.md",
+    "title": "CodeRefinery workshop | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/coderefinery-workshop",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-security-challenges-in-autonomous-ai-agents.md",
+    "title": "Security Challenges in Autonomous AI Agents | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/security-challenges-in-autonomous-ai-agents",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-data-protection-workshop.md",
+    "title": "Hands-on Data Protection workshop | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/data-protection-workshop",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-open-data-hackathon.md",
+    "title": "LUMI AI Factory Open Data Hackathon | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/open-data-hackathon",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-intro-deep-learning.md",
+    "title": "Introduction to Deep Learning | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/intro-deep-learning",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-resource-efficient-ai-model-parallelisation-on-lumi-supercomputer.md",
+    "title": "Resource-efficient AI model parallelisation on LUMI supercomputer | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/resource-efficient-ai-model-parallelisation-on-lumi-supercomputer",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-engineering-of-machine-learning-systems.md",
+    "title": "Engineering of Machine Learning systems | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/engineering-of-machine-learning-systems",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-evolutionary-optimisation.md",
+    "title": "Evolutionary Optimisation of Neural Network Hardware Accelerators | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/evolutionary-optimisation",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-python-for-hpc-2.md",
+    "title": "Python for HPC 2 | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/python-for-hpc-2",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-quantum-machine-learning.md",
+    "title": "Quantum Machine Learning | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/quantum-machine-learning",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-aito-webinar-how-is-artificial-intelligence-changing-research-education-and-innovation-2.md",
+    "title": "AITO webinar – How is artificial intelligence changing research, education, and innovation? | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/aito-webinar-how-is-artificial-intelligence-changing-research-education-and-innovation-2",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-aito-webinar-how-is-artificial-intelligence-changing-research-education-and-innovation.md",
+    "title": "AITO webinar - How is artificial intelligence changing research, education, and innovation? | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/aito-webinar-how-is-artificial-intelligence-changing-research-education-and-innovation",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-practical-deep-learning.md",
+    "title": "Practical Deep Learning | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/practical-deep-learning",
+    "lang": "en"
+  },
+  {
+    "file": "trainings-run-ai-agents-with-lumi-workshop.md",
+    "title": "Run AI Agents with LUMI workshop | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings/run-ai-agents-with-lumi-workshop",
+    "lang": "en"
+  },
+  {
+    "file": "events-health-design-2025.md",
+    "title": "Health Design 2025 | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/health-design-2025",
+    "lang": "en"
+  },
+  {
+    "file": "events-teknologia-25.md",
+    "title": "Teknologia 25 | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/teknologia-25",
+    "lang": "en"
+  },
+  {
+    "file": "events-kainuu-digital-summit-2025.md",
+    "title": "Kainuu Digital Summit 2025 | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/kainuu-digital-summit-2025",
+    "lang": "en"
+  },
+  {
+    "file": "events-ai-day-2025.md",
+    "title": "AI Day 2025 | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/ai-day-2025",
+    "lang": "en"
+  },
+  {
+    "file": "events-match-xr.md",
+    "title": "Match XR 2025 | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/match-xr",
+    "lang": "en"
+  },
+  {
+    "file": "events-adopt-ai-2025.md",
+    "title": "Adopt AI | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/adopt-ai-2025",
+    "lang": "en"
+  },
+  {
+    "file": "events-innoverse-2025.md",
+    "title": "InnoVerse 2025 | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/innoverse-2025",
+    "lang": "en"
+  },
+  {
+    "file": "events-big-friday.md",
+    "title": "Big Friday | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/big-friday",
+    "lang": "en"
+  },
+  {
+    "file": "events-wellbeing-technology-fair.md",
+    "title": "Wellbeing Technology Fair | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/wellbeing-technology-fair",
+    "lang": "en"
+  },
+  {
+    "file": "events-polar-bear-pitching.md",
+    "title": "Polar Bear Pitching | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/polar-bear-pitching",
+    "lang": "en"
+  },
+  {
+    "file": "events-supercomputing-for-business-jyvaskyla.md",
+    "title": "Supercomputing for Business, Jyväskylä | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/supercomputing-for-business-jyvaskyla",
+    "lang": "en"
+  },
+  {
+    "file": "events-turku-tech-week.md",
+    "title": "Turku Tech Week | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/turku-tech-week",
+    "lang": "en"
+  },
+  {
+    "file": "events-healthtech-meets-ai.md",
+    "title": "HealthTech meets AI | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/healthtech-meets-ai",
+    "lang": "en"
+  },
+  {
+    "file": "events-psyhack-x-lumi-ai-factory-hub.md",
+    "title": "PsyHack x LUMI AI Factory Hub: Power of data | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/psyhack-x-lumi-ai-factory-hub",
+    "lang": "en"
+  },
+  {
+    "file": "events-learning-futures-hackathon.md",
+    "title": "Learning Futures Hackathon | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/learning-futures-hackathon",
+    "lang": "en"
+  },
+  {
+    "file": "events-chembio.md",
+    "title": "ChemBio Finland | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/chembio",
+    "lang": "en"
+  },
+  {
+    "file": "events-advancemed-2026.md",
+    "title": "AdvanceMed 2026 | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/advancemed-2026",
+    "lang": "en"
+  },
+  {
+    "file": "events-aiwalktalk.md",
+    "title": "AI Walk & Talk | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/aiwalktalk",
+    "lang": "en"
+  },
+  {
+    "file": "events-isc-2026.md",
+    "title": "ISC 2026 | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/isc-2026",
+    "lang": "en"
+  },
+  {
+    "file": "events-ai-jyvaskyla.md",
+    "title": "AI Jyväskylä | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/ai-jyvaskyla",
+    "lang": "en"
+  },
+  {
+    "file": "events-ai-expert-tour-krakow-poland.md",
+    "title": "AI Expert Tour – Kraków | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/ai-expert-tour-krakow-poland",
+    "lang": "en"
+  },
+  {
+    "file": "events-isp-futuretec-2026.md",
+    "title": "ISP FutureTec 2026 | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/isp-futuretec-2026",
+    "lang": "en"
+  },
+  {
+    "file": "events-finlands-digital-compass-whats-next-for-ai.md",
+    "title": "Finland's Digital Compass: What's Next for AI? | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/finlands-digital-compass-whats-next-for-ai",
+    "lang": "en"
+  },
+  {
+    "file": "events-researchers-night-at-it4innovation-national-computing-center.md",
+    "title": "Researchers' Night at IT4Innovation National Computing Center | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/researchers-night-at-it4innovation-national-computing-center",
+    "lang": "en"
+  },
+  {
+    "file": "events-cerna-ai-festival.md",
+    "title": "Cerna.AI Festival | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/cerna-ai-festival",
+    "lang": "en"
+  },
+  {
+    "file": "events-ai-factories-fostering-collaboration-and-innovation.md",
+    "title": "AI Factories: Fostering Collaboration and Innovation | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/ai-factories-fostering-collaboration-and-innovation",
+    "lang": "en"
+  },
+  {
+    "file": "events-european-big-data-value-forum.md",
+    "title": "European Big Data Value Forum | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/european-big-data-value-forum",
+    "lang": "en"
+  },
+  {
+    "file": "events-world-summit-ai.md",
+    "title": "World Summit AI | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/world-summit-ai",
+    "lang": "en"
+  },
+  {
+    "file": "events-eurohpc-user-days-2026.md",
+    "title": "EuroHPC User Days 2026 | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/eurohpc-user-days-2026",
+    "lang": "en"
+  },
+  {
+    "file": "events-nordic-ai-factory-summit-2026.md",
+    "title": "Nordic AI Factory Summit 2026 | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/nordic-ai-factory-summit-2026",
+    "lang": "en"
+  },
+  {
+    "file": "events-nordeep.md",
+    "title": "NORDEEP | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/nordeep",
+    "lang": "en"
+  },
+  {
+    "file": "events-european-ai-factories-for-innovation.md",
+    "title": "Unlocking European AI potential: AI Factories for innovation & competitiveness | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/european-ai-factories-for-innovation",
+    "lang": "en"
+  },
+  {
+    "file": "events-innovation-week-2026.md",
+    "title": "Innovation Week 2026 | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/innovation-week-2026",
+    "lang": "en"
+  },
+  {
+    "file": "events-ai-lounge.md",
+    "title": "AI Lounge – Fridays at the LUMI AI Factory Hubs | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/ai-lounge",
+    "lang": "en"
+  },
+  {
+    "file": "events-nordic-supercomputing-summit-2026.md",
+    "title": "Nordic Supercomputing Summit 2026 | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/nordic-supercomputing-summit-2026",
+    "lang": "en"
+  },
+  {
+    "file": "events-ai-models-in-industry-ostrava-hub.md",
+    "title": "AI Models in Industry: Transformation from Various Points of View | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/ai-models-in-industry-ostrava-hub",
+    "lang": "en"
+  },
+  {
+    "file": "events-ai-expert-tour-free-consultations.md",
+    "title": "AI Expert Tour – free consultations | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/ai-expert-tour-free-consultations",
+    "lang": "en"
+  },
+  {
+    "file": "events-6g-resilience-summit.md",
+    "title": "6G Resilience Summit | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/6g-resilience-summit",
+    "lang": "en"
+  },
+  {
+    "file": "events-ai-expert-tour-in-kajaani.md",
+    "title": "AI Expert Tour – Kajaani | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/ai-expert-tour-in-kajaani",
+    "lang": "en"
+  },
+  {
+    "file": "events-kainuu-digital-summit-2026-industry-day.md",
+    "title": "Kainuu Digital Summit 2026 – Industry Day | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/kainuu-digital-summit-2026-industry-day",
+    "lang": "en"
+  },
+  {
+    "file": "events-health-design-2026.md",
+    "title": "Health Design 2026 | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/health-design-2026",
+    "lang": "en"
+  },
+  {
+    "file": "events-ict-kkds-conference-prague-2026.md",
+    "title": "ICT KKDS Conference Prague 2026 | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/ict-kkds-conference-prague-2026",
+    "lang": "en"
+  },
+  {
+    "file": "events-kokkola-material-week-2026.md",
+    "title": "Kokkola Material Week 2026 | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/kokkola-material-week-2026",
+    "lang": "en"
+  },
+  {
+    "file": "events-vibecoding-ai-engineering-festival.md",
+    "title": "Vibecoding & AI Engineering Festival | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events/vibecoding-ai-engineering-festival",
+    "lang": "en"
+  },
+  {
+    "file": "services-training-skills-development.md",
+    "title": "Training and skills development | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/services/training-skills-development",
+    "lang": "en"
+  },
+  {
+    "file": "services-expert-technical-support-for-ai-development.md",
+    "title": "Expert support for AI development | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/services/expert-technical-support-for-ai-development",
+    "lang": "en"
+  },
+  {
+    "file": "services-lumi-ai-factory-data-lab.md",
+    "title": "LUMI AI Factory data lab | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/services/lumi-ai-factory-data-lab",
+    "lang": "en"
+  },
+  {
+    "file": "services-ai-software-and-solutions.md",
+    "title": "AI software and solutions | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/services/ai-software-and-solutions",
+    "lang": "en"
+  },
+  {
+    "file": "services-expert-support-for-ai-business-development.md",
+    "title": "Expert support for AI business development | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/services/expert-support-for-ai-business-development",
+    "lang": "en"
+  },
+  {
+    "file": "services-quantum-services.md",
+    "title": "Quantum services | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/services/quantum-services",
+    "lang": "en"
+  },
+  {
+    "file": "services-powerful-ai-computing.md",
+    "title": "Powerful AI computing | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/services/powerful-ai-computing",
+    "lang": "en"
+  },
+  {
+    "file": "services-ai-ecosystem-and-networking.md",
+    "title": "AI ecosystem and networking | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/services/ai-ecosystem-and-networking",
+    "lang": "en"
+  },
+  {
+    "file": "stories-gosta-labs.md",
+    "title": "Gosta Labs: Enhancing healthcare client encounter efficiency | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/stories/gosta-labs",
+    "lang": "en"
+  },
+  {
+    "file": "stories-supersight.md",
+    "title": "Supersight’s vision for the future of real estate | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/stories/supersight",
+    "lang": "en"
+  },
+  {
+    "file": "stories-top-data-science.md",
+    "title": "LUMI supercomputer empowers Top Data Science in AI innovations | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/stories/top-data-science",
+    "lang": "en"
+  },
+  {
+    "file": "stories-compatai.md",
+    "title": "LUMI in support of ComPatAI consortium’s creation of AI learning model for pathology | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/stories/compatai",
+    "lang": "en"
+  },
+  {
+    "file": "stories-sics-ai.md",
+    "title": "SICS AI: HPC access to LUMI supercomputer for AI and robotics | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/stories/sics-ai",
+    "lang": "en"
+  },
+  {
+    "file": "stories-qmill.md",
+    "title": "QMill achieves record-breaking quantum circuit compression with LUMI supercomputer | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/stories/qmill",
+    "lang": "en"
+  },
+  {
+    "file": "stories-tildeopen.md",
+    "title": "TildeOpen, Europe’s flagship open-source multilingual AI model | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/stories/tildeopen",
+    "lang": "en"
+  },
+  {
+    "file": "stories-root-signals.md",
+    "title": "Root Signals: The quest for leadership in LLM reliability evaluation and quality control with LUMI | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/stories/root-signals",
+    "lang": "en"
+  },
+  {
+    "file": "stories-ai-transpwood.md",
+    "title": "AI-TRANSPWOOD: AI methods and modelling accelerate the development of wood materials | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/stories/ai-transpwood",
+    "lang": "en"
+  },
+  {
+    "file": "stories-grove.md",
+    "title": "Towards robots that can make you a drink | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/stories/grove",
+    "lang": "en"
+  },
+  {
+    "file": "stories-visidon.md",
+    "title": "Visidon uses LUMI supercomputer to handle peak workloads | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/stories/visidon",
+    "lang": "en"
+  },
+  {
+    "file": "stories-data-streaming-pilot-with-seabee.md",
+    "title": "LUMI AI Factory’s data streaming pilot with SeaBee is revolutionising sea bird monitoring | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/stories/data-streaming-pilot-with-seabee",
+    "lang": "en"
+  },
+  {
+    "file": "stories-digifarm.md",
+    "title": "DigiFarm revolutionises agriculture with artificial intelligence | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/stories/digifarm",
+    "lang": "en"
+  },
+  {
+    "file": "stories-bris.md",
+    "title": "Bris: A high-resolution data-driven weather forecasting model | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/stories/bris",
+    "lang": "en"
+  },
+  {
+    "file": "stories-syncable.md",
+    "title": "LUMI accelerates AI model training for Danish startup | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/stories/syncable",
+    "lang": "en"
+  },
+  {
+    "file": "stories-dokport.md",
+    "title": "Dokport advances online doctor appointment services with LUMI AI Factory expertise | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/stories/dokport",
+    "lang": "en"
+  },
+  {
+    "file": "stories-iceye.md",
+    "title": "Space technology company ICEYE praises LUMI user support: expert guidance step by step | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/stories/iceye",
+    "lang": "en"
+  },
+  {
+    "file": "stories-data-streaming-pilot-smart-car.md",
+    "title": "LUMI AI Factory data streaming pilot paves the way for autonomous vehicles | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/stories/data-streaming-pilot-smart-car",
+    "lang": "en"
+  },
+  {
+    "file": "stories-developing-secure-enterprise-ai-modules.md",
+    "title": "Developing secure enterprise AI modules with the LUMI AI Factory | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/stories/developing-secure-enterprise-ai-modules",
+    "lang": "en"
+  },
+  {
+    "file": "stories-poutanet.md",
+    "title": "Poutanet advances 4G and 5G telecom innovation using LUMI AI Factory Services | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/stories/poutanet",
+    "lang": "en"
+  },
+  {
+    "file": "stories-from-small-to-large-with-lumi-supercomputer-a-computer-vision-model-for-sports-spectators.md",
+    "title": "From small to large with LUMI supercomputer: a computer vision model for sports spectators | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/stories/from-small-to-large-with-lumi-supercomputer-a-computer-vision-model-for-sports-spectators",
+    "lang": "en"
+  },
+  {
+    "file": "stories-jst-healthcare-solutions-is-developing-finnish-health-technology-with-the-help-of-lumi-ai-fa.md",
+    "title": "JST Healthcare Solutions is developing Finnish health technology with the help of LUMI AI Factory  | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/stories/jst-healthcare-solutions-is-developing-finnish-health-technology-with-the-help-of-lumi-ai-factory",
+    "lang": "en"
+  },
+  {
+    "file": "stories-video-success-stories-running-ai-on-lumi.md",
+    "title": "Video success stories: running AI on LUMI | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/stories/video-success-stories-running-ai-on-lumi",
+    "lang": "en"
+  },
+  {
+    "file": "articles-eurohpc-ju-access-calls-for-ai-factories.md",
+    "title": "EuroHPC JU access calls for AI Factories | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/eurohpc-ju-access-calls-for-ai-factories",
+    "lang": "en"
+  },
+  {
+    "file": "articles-the-website-is-live.md",
+    "title": "The LUMI AI Factory website is live! | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/the-website-is-live",
+    "lang": "en"
+  },
+  {
+    "file": "articles-eurohpc-user-days-2025.md",
+    "title": "EuroHPC User Days brings science, access, and AI Factories into focus | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/eurohpc-user-days-2025",
+    "lang": "en"
+  },
+  {
+    "file": "articles-successor-for-lumi-announced.md",
+    "title": "The successor for LUMI announced — a new pan-European supercomputer and one of the first European Union’s AI Factories to be placed in Finland | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/successor-for-lumi-announced",
+    "lang": "en"
+  },
+  {
+    "file": "articles-lumi-ai-factory-launch.md",
+    "title": "LUMI AI Factory empowering European startups and SMEs to unlock AI’s full potential | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/lumi-ai-factory-launch",
+    "lang": "en"
+  },
+  {
+    "file": "articles-service-catalogue-published.md",
+    "title": "Your gateway to HPC and AI innovation: LUMI AI Factory services | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/service-catalogue-published",
+    "lang": "en"
+  },
+  {
+    "file": "articles-real-4-reg.md",
+    "title": "Machine learning on sensitive data | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/real-4-reg",
+    "lang": "en"
+  },
+  {
+    "file": "articles-training-survey.md",
+    "title": "Survey: AI training needs for industry | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/training-survey",
+    "lang": "en"
+  },
+  {
+    "file": "articles-market-survey-2025.md",
+    "title": "Research shows LUMI AI Factory drives AI Innovation for start-ups and SMEs | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/market-survey-2025",
+    "lang": "en"
+  },
+  {
+    "file": "articles-survey-ai-and-hpc-customers.md",
+    "title": "Participate in a survey about AI and HPC customer needs! | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/survey-ai-and-hpc-customers",
+    "lang": "en"
+  },
+  {
+    "file": "articles-first-services-from-lumi-ai-factory-launched-free-of-charge-for-companies-and-researchers-d.md",
+    "title": "First services from LUMI AI Factory launched – free of charge for companies and researchers developing AI | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/first-services-from-lumi-ai-factory-launched-free-of-charge-for-companies-and-researchers-developing-ai",
+    "lang": "en"
+  },
+  {
+    "file": "articles-user-interfaces-are-changing-but-web-search-remains.md",
+    "title": "User interfaces are changing, but web search remains | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/user-interfaces-are-changing-but-web-search-remains",
+    "lang": "en"
+  },
+  {
+    "file": "articles-towards-a-competitive-european-ai-ecosystem.md",
+    "title": "Towards a competitive European AI ecosystem | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/towards-a-competitive-european-ai-ecosystem",
+    "lang": "en"
+  },
+  {
+    "file": "articles-lumi-ai-factory-hub-opens-in-fi.md",
+    "title": "LUMI AI Factory Hub opens in Finland – innovation and AI expertise for all | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/lumi-ai-factory-hub-opens-in-fi",
+    "lang": "en"
+  },
+  {
+    "file": "articles-international-data-protection-day.md",
+    "title": "International Data Protection Day special: data protection and AI, what are the current and future challenges? | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/international-data-protection-day",
+    "lang": "en"
+  },
+  {
+    "file": "articles-video-intro-to-lumi-ai-factory.md",
+    "title": "Video: introduction to LUMI AI Factory | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/video-intro-to-lumi-ai-factory",
+    "lang": "en"
+  },
+  {
+    "file": "articles-kumpula-campus.md",
+    "title": "LUMI AI Factory Hub opens in the Kumpula Campus in Helsinki | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/kumpula-campus",
+    "lang": "en"
+  },
+  {
+    "file": "articles-eurohpc-ju-ai-factory-antennas.md",
+    "title": "EuroHPC JU selects AI Factory Antennas to broaden AI Factories Initiative – four Antennas to the LUMI AI Factory | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/eurohpc-ju-ai-factory-antennas",
+    "lang": "en"
+  },
+  {
+    "file": "articles-lumi-ai-dc-construction-blog.md",
+    "title": "Construction of the LUMI-AI data center in full swing | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/lumi-ai-dc-construction-blog",
+    "lang": "en"
+  },
+  {
+    "file": "articles-ai-and-environmental-sustainability.md",
+    "title": "AI and environmental sustainability hand in hand   | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/ai-and-environmental-sustainability",
+    "lang": "en"
+  },
+  {
+    "file": "articles-csc-loiste-excess-heat-agreement.md",
+    "title": "CSC and Loiste advance utilisation of data center excess heat in Kajaani, Finland | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/csc-loiste-excess-heat-agreement",
+    "lang": "en"
+  },
+  {
+    "file": "articles-csc-and-terkko-health-hub.md",
+    "title": "Advancing AI‑driven health and research innovation | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/csc-and-terkko-health-hub",
+    "lang": "en"
+  },
+  {
+    "file": "articles-lumi-ai-factory-hub-ostrava-is-officially-open.md",
+    "title": "LUMI AI Factory Hub Ostrava is officially open | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/lumi-ai-factory-hub-ostrava-is-officially-open",
+    "lang": "en"
+  },
+  {
+    "file": "articles-running-ai-on-lumi-success-stories.md",
+    "title": "Running AI on LUMI: Video success stories | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/running-ai-on-lumi-success-stories",
+    "lang": "en"
+  },
+  {
+    "file": "articles-psyhack-mentor.md",
+    "title": "Think compliance first: Lessons from a first-time PsyHack mentor | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/psyhack-mentor",
+    "lang": "en"
+  },
+  {
+    "file": "articles-survey-needs.md",
+    "title": "Survey: Needs, experiences, and priorities of organisations working with AI and HPC | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/survey-needs",
+    "lang": "en"
+  },
+  {
+    "file": "articles-data-economy-spotlight-2026.md",
+    "title": "LUMI AIF DaaS nominated for Data Economy Spotlight 2026 listing | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/data-economy-spotlight-2026",
+    "lang": "en"
+  },
+  {
+    "file": "articles-new-services.md",
+    "title": "LUMI AI Factory introduces new services and website updates  | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/new-services",
+    "lang": "en"
+  },
+  {
+    "file": "articles-six-months-of-hubs.md",
+    "title": "​​Six months of LUMI AI Factory Hubs – progress, insights, and what’s next​  | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/six-months-of-hubs",
+    "lang": "en"
+  },
+  {
+    "file": "articles-iqm-selected-to-deliver-the-lumi-iq-quantum-computer.md",
+    "title": "IQM selected to deliver the LUMI-IQ quantum computer | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/iqm-selected-to-deliver-the-lumi-iq-quantum-computer",
+    "lang": "en"
+  },
+  {
+    "file": "articles-openwebsearch.md",
+    "title": "OpenWebSearch.eu and LUMI AI Factory: powering Dataset-as-a-Service with a European Open Web Index | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/openwebsearch",
+    "lang": "en"
+  },
+  {
+    "file": "articles-czechias-alpha-industries.md",
+    "title": "Czechia's Alpha Industries validates LUMI’s power and sustainability in their initial test | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/czechias-alpha-industries",
+    "lang": "en"
+  },
+  {
+    "file": "articles-scaling-reinforcement-learning.md",
+    "title": "Scaling reinforcement learning with verifiable rewards for LLMs on LUMI  | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/scaling-reinforcement-learning",
+    "lang": "en"
+  },
+  {
+    "file": "articles-bull-to-deliver-lumi-ai-supercomputer.md",
+    "title": "Bull selected to deliver LUMI-AI supercomputer, powering next-generation AI workloads and beyond | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/bull-to-deliver-lumi-ai-supercomputer",
+    "lang": "en"
+  },
+  {
+    "file": "articles-trustworthy-ai-turning-compliance-into-competitive-advantage.md",
+    "title": "Trustworthy AI: Turning compliance into competitive advantage | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/trustworthy-ai-turning-compliance-into-competitive-advantage",
+    "lang": "en"
+  },
+  {
+    "file": "articles-blog-why-supercomputing-and-lumi.md",
+    "title": "Why supercomputing and LUMI? | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/blog-why-supercomputing-and-lumi",
+    "lang": "en"
+  },
+  {
+    "file": "articles-ai-expert-consultation.md",
+    "title": "What is LUMI AI Factory’s Artificial Intelligence expert consultation? | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/ai-expert-consultation",
+    "lang": "en"
+  },
+  {
+    "file": "articles-agent-infrastructure-on-lumi.md",
+    "title": "AI agents and agent infrastructure on LUMI | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/agent-infrastructure-on-lumi",
+    "lang": "en"
+  },
+  {
+    "file": "articles-local-agents-remote-brains-connecting-opencode-to-lumi.md",
+    "title": "Local agents, remote brains: connecting OpenCode to LUMI | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/local-agents-remote-brains-connecting-opencode-to-lumi",
+    "lang": "en"
+  },
+  {
+    "file": "articles-dataset-as-a-service.md",
+    "title": "Dataset-as-a-Service from the LUMI AI Factory – data close to compute | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/dataset-as-a-service",
+    "lang": "en"
+  },
+  {
+    "file": "articles-lumi-ai-factory-advances-toward-europes-first-superconducting-quantum-computer-with-logical.md",
+    "title": "LUMI AI Factory advances toward Europe's first superconducting quantum computer with logical qubits | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/lumi-ai-factory-advances-toward-europes-first-superconducting-quantum-computer-with-logical-qubits",
+    "lang": "en"
+  },
+  {
+    "file": "articles-construction-progresses.md",
+    "title": "LUMI AI Factory data center construction progresses in Kajaani | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/construction-progresses",
+    "lang": "en"
+  },
+  {
+    "file": "articles-cerna-ai-festival-lumi-ai-factory-co-organised-czechias-biggest-ai-event-of-the-year.md",
+    "title": "CERNA.AI Festival: LUMI AI Factory co-organised Czechia’s biggest AI event of the year | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/cerna-ai-festival-lumi-ai-factory-co-organised-czechias-biggest-ai-event-of-the-year",
+    "lang": "en"
+  },
+  {
+    "file": "articles-first-lumi-ai-factory-quantum-services-now-available.md",
+    "title": "First LUMI AI Factory quantum services now available | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/first-lumi-ai-factory-quantum-services-now-available",
+    "lang": "en"
+  },
+  {
+    "file": "articles-ai-matchmaking-platform.md",
+    "title": "Introducing Matchmaking platform: from needs to solutions, from connections to collaboration | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/ai-matchmaking-platform",
+    "lang": "en"
+  },
+  {
+    "file": "articles-benefits-of-the-lumi-ai-software-environment.md",
+    "title": "Benefits of the LUMI AI software environment | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/benefits-of-the-lumi-ai-software-environment",
+    "lang": "en"
+  },
+  {
+    "file": "articles-aila-ai-model-powered-by-lumi-advances-the-future-of-weather-forecasting.md",
+    "title": "Aila AI model powered by LUMI advances the future of weather forecasting | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/aila-ai-model-powered-by-lumi-advances-the-future-of-weather-forecasting",
+    "lang": "en"
+  },
+  {
+    "file": "articles-lumi-is-supporting-new-czech-research-at-the-intersection-of-hpc-ai-and-quantum-computing.md",
+    "title": "LUMI is supporting new Czech research at the intersection of HPC, AI and quantum computing | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/articles/lumi-is-supporting-new-czech-research-at-the-intersection-of-hpc-ai-and-quantum-computing",
+    "lang": "en"
+  },
+  {
+    "file": "accessibility-statement.md",
+    "title": "Accessibility statement | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/accessibility-statement",
+    "lang": "en"
+  },
+  {
+    "file": "user-support.md",
+    "title": "User support | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/user-support",
+    "lang": "en"
+  },
+  {
+    "file": "about-us-sustainability.md",
+    "title": "Sustainability | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/about-us/sustainability",
+    "lang": "en"
+  },
+  {
+    "file": "about-us.md",
+    "title": "About us | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/about-us",
+    "lang": "en"
+  },
+  {
+    "file": "about-us-eurohpc-ju.md",
+    "title": "EUROHPC JU | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/about-us/eurohpc-ju",
+    "lang": "en"
+  },
+  {
+    "file": "privacy.md",
+    "title": "Privacy | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/privacy",
+    "lang": "en"
+  },
+  {
+    "file": "faq.md",
+    "title": "FAQ | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/faq",
+    "lang": "en"
+  },
+  {
+    "file": "about-us-lumi-aif-consortium.md",
+    "title": "LUMI AIF Consortium | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/about-us/lumi-aif-consortium",
+    "lang": "en"
+  },
+  {
+    "file": "pricing-and-eligibility.md",
+    "title": "Pricing and eligibility | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/pricing-and-eligibility",
+    "lang": "en"
+  },
+  {
+    "file": "terms-of-use-of-lumi-ai-factory-dataset-as-a-service.md",
+    "title": "Terms of Use of LUMI AI Factory Dataset-as-a-Service | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/terms-of-use-of-lumi-ai-factory-dataset-as-a-service",
+    "lang": "en"
+  },
+  {
+    "file": "hubs.md",
+    "title": "LUMI AI Factory Hubs | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/hubs",
+    "lang": "en"
+  },
+  {
+    "file": "your-ai-journey.md",
+    "title": "Your AI Journey | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/your-ai-journey",
+    "lang": "en"
+  },
+  {
+    "file": "about-us-media.md",
+    "title": "Media | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/about-us/media",
+    "lang": "en"
+  },
+  {
+    "file": "about-us-computing-infrastructure.md",
+    "title": "Computing infrastructure | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/about-us/computing-infrastructure",
+    "lang": "en"
+  },
+  {
+    "file": "glossary.md",
+    "title": "Glossary | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/glossary",
+    "lang": "en"
+  },
+  {
+    "file": "events.md",
+    "title": "Events | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/events",
+    "lang": "en"
+  },
+  {
+    "file": "trybuy.md",
+    "title": "Try&Buy | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trybuy",
+    "lang": "en"
+  },
+  {
+    "file": "aitta-ml-inference-service.md",
+    "title": "Aitta ML Inference Service | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/aitta-ml-inference-service",
+    "lang": "en"
+  },
+  {
+    "file": "resource-access-proposal-support.md",
+    "title": "Resource Access Proposal Support | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/resource-access-proposal-support",
+    "lang": "en"
+  },
+  {
+    "file": "grant-proposal-consultation.md",
+    "title": "Grant Proposal Consultation | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/grant-proposal-consultation",
+    "lang": "en"
+  },
+  {
+    "file": "consultation-on-ai-methods.md",
+    "title": "Consultation on AI methods | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/consultation-on-ai-methods",
+    "lang": "en"
+  },
+  {
+    "file": "expert-support-on-training-distributed-ai-models.md",
+    "title": "Expert support on training distributed AI models | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/expert-support-on-training-distributed-ai-models",
+    "lang": "en"
+  },
+  {
+    "file": "consultation-on-ai-or-hpc-optimisation.md",
+    "title": "Consultation on AI or HPC optimisation | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/consultation-on-ai-or-hpc-optimisation",
+    "lang": "en"
+  },
+  {
+    "file": "customer-training-on-large-scale-ai-hpc.md",
+    "title": "Customer training on large scale AI & HPC | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/customer-training-on-large-scale-ai-hpc",
+    "lang": "en"
+  },
+  {
+    "file": "expert-support-for-implementing-an-hpc-ai-project.md",
+    "title": "Expert support for implementing an HPC & AI project | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/expert-support-for-implementing-an-hpc-ai-project",
+    "lang": "en"
+  },
+  {
+    "file": "expert-consultation-on-trustworthy-ai-development.md",
+    "title": "Expert consultation on Trustworthy AI development  | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/expert-consultation-on-trustworthy-ai-development",
+    "lang": "en"
+  },
+  {
+    "file": "initial-risk-analysis-consultation-eu-ai-act-compliance-checker.md",
+    "title": "Initial risk analysis consultation - EU AI Act Compliance Checker | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/initial-risk-analysis-consultation-eu-ai-act-compliance-checker",
+    "lang": "en"
+  },
+  {
+    "file": "large-scale-access-to-lumi-ai-factory.md",
+    "title": "Large Scale Access to LUMI AI Factory | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/large-scale-access-to-lumi-ai-factory",
+    "lang": "en"
+  },
+  {
+    "file": "fast-lane-access-to-lumi-ai-factory.md",
+    "title": "Fast Lane Access to LUMI AI Factory  | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/fast-lane-access-to-lumi-ai-factory",
+    "lang": "en"
+  },
+  {
+    "file": "playground-access-to-lumi-ai-factory.md",
+    "title": "Playground Access to LUMI AI Factory | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/playground-access-to-lumi-ai-factory",
+    "lang": "en"
+  },
+  {
+    "file": "ai-software-environment.md",
+    "title": "AI Software Environment | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/ai-software-environment",
+    "lang": "en"
+  },
+  {
+    "file": "ai-for-science-and-collaborative-eu-projects-access-to-lumi-ai-factory.md",
+    "title": "AI for Science and Collaborative EU Projects Access to LUMI AI Factory | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/ai-for-science-and-collaborative-eu-projects-access-to-lumi-ai-factory",
+    "lang": "en"
+  },
+  {
+    "file": "start-your-ai-journey.md",
+    "title": "Start Your AI Journey | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/start-your-ai-journey",
+    "lang": "en"
+  },
+  {
+    "file": "enter-the-lumi-ai-factory.md",
+    "title": "Enter the LUMI AI Factory | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/enter-the-lumi-ai-factory",
+    "lang": "en"
+  },
+  {
+    "file": "quantum-computing-resource-access.md",
+    "title": "Quantum computing resource access | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/quantum-computing-resource-access",
+    "lang": "en"
+  },
+  {
+    "file": "quantum-expert-support-and-consulting.md",
+    "title": "Quantum expert support and consulting | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/quantum-expert-support-and-consulting",
+    "lang": "en"
+  },
+  {
+    "file": "dataset-as-a-service.md",
+    "title": "LUMI AI Factory Dataset-as-a-Service | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/dataset-as-a-service",
+    "lang": "en"
+  },
+  {
+    "file": "czechia-lumi-ai-factory-hub.md",
+    "title": "Czechia Hub | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/czechia-lumi-ai-factory-hub",
+    "lang": "en"
+  },
+  {
+    "file": "ai-expert-talks.md",
+    "title": "AI expert talks | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/ai-expert-talks",
+    "lang": "en"
+  },
+  {
+    "file": "ai-matchmaking-for-finland.md",
+    "title": "AI Matchmaking for Finland | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/ai-matchmaking-for-finland",
+    "lang": "en"
+  },
+  {
+    "file": "newsletter.md",
+    "title": "Newsletter | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/newsletter",
+    "lang": "en"
+  },
+  {
+    "file": "finland-lumi-ai-factory-hubs.md",
+    "title": "Finland Hubs | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/finland-lumi-ai-factory-hubs",
+    "lang": "en"
+  },
+  {
+    "file": "about-us-deliverables.md",
+    "title": "Deliverables | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/about-us/deliverables",
+    "lang": "en"
+  },
+  {
+    "file": "trainings.md",
+    "title": "Training | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/trainings",
+    "lang": "en"
+  },
+  {
+    "file": "ai-expert-tour.md",
+    "title": "AI Expert Tour | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/ai-expert-tour",
+    "lang": "en"
+  },
+  {
+    "file": "user-support-road-to-production.md",
+    "title": "Road to production | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/user-support/road-to-production",
+    "lang": "en"
+  },
+  {
+    "file": "about-us-open-positions.md",
+    "title": "Open positions | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/about-us/open-positions",
+    "lang": "en"
+  },
+  {
+    "file": "ai-self-assessment-survey.md",
+    "title": "AI self-assessment survey | LUMI AI Factory",
+    "url": "https://lumi-ai-factory.eu/ai-self-assessment-survey",
+    "lang": "en"
+  }
+]

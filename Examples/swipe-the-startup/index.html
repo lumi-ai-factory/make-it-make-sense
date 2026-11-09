@@ -1,0 +1,1085 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Swipe the Startup · AI Act Edition</title>
+<style>
+  :root {
+    --ink: #3b2345;
+    --muted: #7a6488;
+    --pink: #ff5fa2;
+    --banned-bg: #ffe3e3; --banned-ink: #a12522; --banned-line: #ffb9b9;
+    --risk-bg: #fff2d4;   --risk-ink: #8a5300;   --risk-line: #ffd489;
+    --trans-bg: #dbeafe;  --trans-ink: #1d4ed8;  --trans-line: #9cc3ff;
+    --fine-bg: #d8f6e4;   --fine-ink: #177a45;   --fine-line: #8ce0af;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(1100px 560px at 85% -10%, #ffe0ef 0%, transparent 60%),
+      radial-gradient(900px 480px at -10% 110%, #e3d4ff 0%, transparent 55%),
+      linear-gradient(165deg, #fff7fb 0%, #f6efff 55%, #eef6ff 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .wrap {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+    padding: 14px 16px 4px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  header h1 {
+    margin: 0;
+    text-align: center;
+    font-size: clamp(1.7rem, 5.5vw, 2.5rem);
+    letter-spacing: -0.02em;
+  }
+  .tagline {
+    text-align: center;
+    color: var(--muted);
+    font-weight: 700;
+    margin: 2px 0 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+  }
+  .hud { display: flex; gap: 10px; justify-content: center; margin-bottom: 10px; }
+  .pill {
+    background: #fff;
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(140, 60, 120, 0.12);
+  }
+  .pill-btn {
+    font: inherit;
+    font-weight: 700;
+    color: var(--ink);
+    cursor: pointer;
+    border: none;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+  .pill-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(140, 60, 120, 0.18); }
+  .pill-btn:focus-visible { outline: 3px solid #7c3aed; outline-offset: 2px; }
+
+  /* ---- play area: game column + (wide screens) verdict panel ---- */
+  .play-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+  .game-col { min-width: 0; }
+  .side-col { display: block; }
+  .side-label {
+    margin: 0 0 10px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--muted);
+  }
+  .side-placeholder {
+    border: 2px dashed #d8c7e2;
+    border-radius: 20px;
+    padding: 22px 18px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    background: rgba(255, 255, 255, 0.5);
+  }
+  .side-placeholder p { margin: 0; }
+
+  /* ---- stage: direction labels around the card ---- */
+  .stage {
+    display: grid;
+    grid-template-areas:
+      ".    up    ."
+      "left zone right"
+      ".    down  .";
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto 1fr auto;
+    gap: 10px;
+    align-items: center;
+    justify-items: center;
+    min-height: clamp(400px, 58vh, 560px);
+  }
+  .dir {
+    border-radius: 999px;
+    padding: 9px 14px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border: 2px solid;
+    background: #fff;
+    white-space: nowrap;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+  .dir span { font-size: 1.05em; }
+  .dir.hot { transform: scale(1.12); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18); }
+  .dir.up   { grid-area: up;   background: var(--risk-bg);  color: var(--risk-ink);  border-color: var(--risk-line); }
+  .dir.down { grid-area: down; background: var(--trans-bg); color: var(--trans-ink); border-color: var(--trans-line); }
+  .dir.left { grid-area: left; background: var(--banned-bg);color: var(--banned-ink);border-color: var(--banned-line); }
+  .dir.right{ grid-area: right;background: var(--fine-bg);  color: var(--fine-ink);  border-color: var(--fine-line); }
+  @media (max-width: 600px) {
+    .dir.left, .dir.right {
+      writing-mode: vertical-rl;
+      padding: 14px 7px;
+      font-size: 0.78rem;
+    }
+    /* leave room for the verdict panel below the card */
+    .stage { min-height: clamp(300px, 44vh, 420px); }
+  }
+  /* wide: the stage (card + direction chips) is centered on the screen.
+     Equal 1fr side columns (wide enough for the side chips) keep the
+     card itself exactly centered; the verdict panel sits below it */
+  @media (min-width: 900px) {
+    .stage {
+      width: min(850px, 100%);
+      margin: 0 auto;
+      grid-template-columns: 1fr minmax(0, 480px) 1fr;
+    }
+    .dir.left { justify-self: end; }
+    .dir.right { justify-self: start; }
+    .side-col { width: min(850px, 100%); justify-self: center; }
+  }
+  /* wide+: the verdict panel floats at the right edge of the screen.
+     50vw - 470px = the space left of the centered 850px stage
+     (half stage 425 + ~29px gap + 16px screen margin), capped at 340px */
+  @media (min-width: 1240px) {
+    .side-col {
+      position: fixed;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: min(340px, calc(50vw - 470px));
+      max-height: calc(100vh - 20px);
+      overflow-y: auto;
+    }
+    /* a bit more compact where the panel is narrow */
+    .side-col .fb-badge { font-size: 30px; }
+    .side-col .fb-title { font-size: 1.45rem; }
+    .side-col .fb-explain { font-size: 0.98rem; line-height: 1.5; }
+    .side-col .fb-source { font-size: 0.78rem; }
+  }
+
+  .card-zone { grid-area: zone; width: 100%; display: grid; }
+  .card {
+    grid-area: 1 / 1;
+    position: relative;
+    width: min(480px, 100%);
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 20px 45px rgba(140, 60, 120, 0.16), 0 2px 6px rgba(140, 60, 120, 0.08);
+    padding: 26px 24px 22px;
+    text-align: center;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  .card.swipe {
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
+    cursor: grab;
+  }
+  .card.swipe.dragging { cursor: grabbing; }
+  /* end of game: a big button takes the card's place so the
+     "final screen" step is impossible to miss */
+  .done-cta {
+    grid-area: 1 / 1;
+    align-self: center;
+    justify-self: center;
+    width: min(480px, 100%);
+    padding: 26px 28px;
+    font: inherit;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #fff;
+    background: linear-gradient(120deg, var(--pink), #7c3aed);
+    border: none;
+    border-radius: 24px;
+    cursor: pointer;
+    box-shadow: 0 20px 45px rgba(140, 60, 120, 0.3);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .done-cta:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 26px 55px rgba(140, 60, 120, 0.38); }
+  .done-cta:focus-visible { outline: 4px solid #7c3aed; outline-offset: 4px; }
+  .done-cta.pop { animation: pop 0.25s ease-out; }
+  .avatar {
+    width: 84px; height: 84px;
+    border-radius: 50%;
+    background: linear-gradient(140deg, #ffe3f0, #ead9ff);
+    display: grid; place-items: center;
+    font-size: 44px;
+    box-shadow: inset 0 0 0 3px #fff, 0 6px 16px rgba(140, 60, 120, 0.15);
+  }
+  .c-name { margin: 0; font-size: clamp(1.5rem, 4.5vw, 2.05rem); letter-spacing: -0.01em; }
+  .c-pitch { margin: 0; font-size: clamp(1.05rem, 1rem + 0.9vw, 1.28rem); line-height: 1.5; }
+  kbd {
+    border: 1px solid #d8c7e2;
+    border-bottom-width: 2px;
+    border-radius: 6px;
+    padding: 1px 6px;
+    font-family: inherit;
+    font-size: 0.85em;
+    background: #fff;
+  }
+
+  /* ---- card motion (gentle) ---- */
+  @keyframes deal-in { from { transform: translateY(24px) scale(0.96); opacity: 0; } to { transform: none; opacity: 1; } }
+  .card.deal-in { animation: deal-in 0.28s ease-out; }
+  @keyframes fly-left  { to { transform: translate(calc(-100% - 60vw), -8%) rotate(-14deg); opacity: 0; } }
+  @keyframes fly-right { to { transform: translate(calc(100% + 60vw), -8%) rotate(14deg); opacity: 0; } }
+  @keyframes fly-up    { to { transform: translate(-6%, calc(-100% - 55vh)) rotate(-10deg); opacity: 0; } }
+  @keyframes fly-down  { to { transform: translate(6%, calc(100% + 55vh)) rotate(10deg); opacity: 0; } }
+  .card.fly-left  { animation: fly-left  0.5s cubic-bezier(0.3, 0.05, 0.35, 1) forwards; pointer-events: none; }
+  .card.fly-right { animation: fly-right 0.5s cubic-bezier(0.3, 0.05, 0.35, 1) forwards; pointer-events: none; }
+  .card.fly-up    { animation: fly-up    0.5s cubic-bezier(0.3, 0.05, 0.35, 1) forwards; pointer-events: none; }
+  .card.fly-down  { animation: fly-down  0.5s cubic-bezier(0.3, 0.05, 0.35, 1) forwards; pointer-events: none; }
+
+  /* ---- feedback (verdict panel: below the card on small/mid screens,
+     floating at the right edge on wide screens) ---- */
+  @keyframes pop { from { transform: translateY(14px) scale(0.97); opacity: 0; } }
+  .card.fb.pop { animation: pop 0.22s ease-out; }
+  .fb-badge { font-size: 40px; line-height: 1; }
+  .fb-title { margin: 0; font-size: clamp(1.6rem, 5vw, 2rem); }
+  .fb-title.ok { color: #1a7f4b; }
+  .fb-title.nope { color: #c22f2f; }
+  .fb-chips { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .chip {
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border: 2px solid;
+    background: #fff;
+  }
+  .chip.banned { background: var(--banned-bg); color: var(--banned-ink); border-color: var(--banned-line); }
+  .chip.risk   { background: var(--risk-bg);   color: var(--risk-ink);   border-color: var(--risk-line); }
+  .chip.trans  { background: var(--trans-bg);  color: var(--trans-ink);  border-color: var(--trans-line); }
+  .chip.fine   { background: var(--fine-bg);   color: var(--fine-ink);   border-color: var(--fine-line); }
+  .fb-explain { margin: 4px 0 0; font-size: clamp(1rem, 1rem + 0.5vw, 1.12rem); line-height: 1.55; }
+  .fb-source { margin: 0; color: var(--muted); font-size: 0.85rem; font-style: italic; line-height: 1.7; }
+  .fb-source a { color: #4c5fd5; font-style: normal; text-underline-offset: 2px; }
+
+  .btn {
+    margin-top: 14px;
+    font: inherit;
+    font-weight: 800;
+    font-size: 1.05rem;
+    color: #fff;
+    background: linear-gradient(120deg, var(--pink), #ff8a5c);
+    border: none;
+    border-radius: 999px;
+    padding: 14px 28px;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(232, 67, 147, 0.35);
+    transition: transform 0.12s ease;
+  }
+  .btn:hover { transform: translateY(-2px) scale(1.02); }
+  .btn:active { transform: scale(0.98); }
+  .btn:focus-visible { outline: 3px solid #7c3aed; outline-offset: 2px; }
+
+  /* ---- legend ---- */
+  .legend {
+    margin: 14px 0 0;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+  .legend-grid {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 8px;
+  }
+  /* ≥900: align the legend with the centered 850px stage.
+     Must come AFTER the base .legend rule above (same specificity,
+     later rule wins) or its margin gets clobbered and the block
+     sits left-aligned in the wider track. */
+  @media (min-width: 900px) {
+    .legend { width: min(850px, 100%); margin: 0 auto; }
+  }
+  .lg { border-radius: 999px; padding: 5px 12px; font-weight: 700; font-size: 0.82rem; border: 2px solid; }
+  .lg.banned { background: var(--banned-bg); color: var(--banned-ink); border-color: var(--banned-line); }
+  .lg.risk   { background: var(--risk-bg);   color: var(--risk-ink);   border-color: var(--risk-line); }
+  .lg.trans  { background: var(--trans-bg);  color: var(--trans-ink);  border-color: var(--trans-line); }
+  .lg.fine   { background: var(--fine-bg);   color: var(--fine-ink);   border-color: var(--fine-line); }
+
+  /* ---- intro overlay ---- */
+  .intro {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    display: grid;
+    place-items: center;
+    padding: 18px;
+    overflow: auto;
+    background: rgba(255, 245, 250, 0.93);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .intro.closing { animation: intro-out 0.23s ease-in forwards; }
+  @keyframes intro-out { to { opacity: 0; transform: scale(1.03); } }
+  .intro-panel {
+    position: relative;
+    width: min(580px, 100%);
+    background: #fff;
+    border-radius: 26px;
+    box-shadow: 0 30px 80px rgba(140, 60, 120, 0.28);
+    padding: 30px 28px 26px;
+    text-align: center;
+  }
+  .intro-x {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 2px solid #e8d9ee;
+    background: #f7f1fa;
+    color: var(--ink);
+    font-size: 22px;
+    line-height: 1;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .intro-x:hover { transform: rotate(90deg) scale(1.06); background: var(--pink); border-color: var(--pink); color: #fff; }
+  .intro-x:focus-visible { outline: 3px solid #7c3aed; outline-offset: 2px; }
+  .intro-title { margin: 0; font-size: clamp(1.6rem, 5vw, 2.1rem); letter-spacing: -0.02em; }
+  .intro-tag {
+    margin: 2px 0 14px;
+    color: var(--muted);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+  }
+  .intro-pitch { margin: 0 0 16px; font-size: 1.02rem; line-height: 1.55; }
+  .intro-panel h3 {
+    margin: 0 0 10px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+  .intro-steps { margin: 0 0 14px; padding: 0; list-style: none; text-align: left; display: grid; gap: 8px; }
+  .intro-steps li { font-size: 0.95rem; line-height: 1.5; background: #faf5fc; border-radius: 12px; padding: 10px 12px; }
+  .intro-chips {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 14px;
+    text-align: left;
+  }
+  .intro-chips .lg {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    border-radius: 14px;
+    padding: 10px 12px;
+    font-size: 0.92rem;
+  }
+  .intro-chips .lg small { font-weight: 600; font-size: 0.78rem; opacity: 0.8; }
+  .intro .warning { margin: 0 0 16px; max-width: none; text-align: left; }
+  .intro-go { width: 100%; margin-top: 0; font-size: 1.15rem; padding: 15px 28px; }
+  .intro-help { width: 100%; margin-bottom: 10px; font-size: 0.95rem; padding: 12px 20px; }
+  @media (max-width: 480px) {
+    .intro-panel { padding: 22px 18px 18px; }
+    .intro-tag { margin: 2px 0 10px; }
+    .intro-pitch { margin-bottom: 12px; font-size: 0.95rem; }
+    .intro-panel h3 { margin-bottom: 8px; }
+    .intro-steps { gap: 6px; margin-bottom: 10px; }
+    .intro-steps li { font-size: 0.9rem; padding: 8px 10px; }
+    .intro-chips { gap: 6px; margin-bottom: 10px; }
+    .intro-chips .lg { padding: 8px 10px; font-size: 0.88rem; }
+    .intro-chips .lg small { font-size: 0.74rem; }
+    .intro .warning { margin-bottom: 12px; font-size: 0.85rem; }
+    .intro-go { padding: 13px 28px; }
+  }
+
+  /* ---- results ---- */
+  #results {
+    text-align: center;
+    padding: 20px 0 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  #results h2 { margin: 0; font-size: clamp(1.6rem, 5vw, 2.2rem); }
+  .final-score {
+    font-size: clamp(3rem, 12vw, 4.5rem);
+    font-weight: 900;
+    background: linear-gradient(120deg, var(--pink), #7c3aed);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .final-title { font-size: clamp(1.2rem, 4vw, 1.6rem); font-weight: 800; margin: 0; }
+  .cta-grid { display: grid; gap: 14px; grid-template-columns: 1fr; width: 100%; }
+  @media (min-width: 900px) { .cta-grid { grid-template-columns: 1fr 1fr; } }
+  .cta {
+    background: #fff;
+    border-radius: 20px;
+    padding: 18px 20px;
+    box-shadow: 0 12px 30px rgba(140, 60, 120, 0.14);
+    text-align: left;
+    max-width: 620px;
+    width: 100%;
+  }
+  @media (min-width: 900px) { .cta { max-width: none; } }
+  .cta-line { font-weight: 800; font-size: 1.05rem; margin: 0 0 8px; }
+  .cta p + p { margin: 0; color: var(--muted); line-height: 1.55; }
+  .credit { color: var(--muted); font-weight: 600; margin: 0; }
+  .recap {
+    background: #fff;
+    border-radius: 20px;
+    padding: 16px 20px;
+    box-shadow: 0 12px 30px rgba(140, 60, 120, 0.14);
+    max-width: 780px;
+    width: 100%;
+    text-align: left;
+  }
+  .recap-label {
+    margin: 0 0 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--muted);
+  }
+  .recap-list { display: grid; grid-template-columns: 1fr; gap: 5px 24px; }
+  @media (min-width: 900px) { .recap-list { grid-template-columns: 1fr 1fr; } }
+  .recap-row { font-size: 0.85rem; line-height: 1.4; }
+  .recap-row.ok { color: #1a7f4b; }
+  .recap-row.nope { color: #c22f2f; }
+  .results-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .btn.secondary {
+    background: #fff;
+    color: var(--ink);
+    border: 2px solid #e3d3ec;
+    box-shadow: 0 6px 16px rgba(140, 60, 120, 0.12);
+  }
+  .sum-body { text-align: left; font-size: 0.95rem; line-height: 1.55; margin-bottom: 16px; }
+  .sum-body p { margin: 0 0 10px; }
+  .sum-tiers { list-style: none; margin: 0 0 12px; padding: 0; display: grid; gap: 8px; }
+  .sum-tiers li { font-size: 0.9rem; line-height: 1.5; background: #faf5fc; border-radius: 12px; padding: 10px 12px; }
+  .sum-note { font-size: 0.82rem; color: var(--muted); font-style: italic; }
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.82rem;
+    line-height: 1.5;
+    padding: 12px 16px 18px;
+  }
+  [hidden] { display: none !important; }
+  @media (prefers-reduced-motion: reduce) {
+    .card, .card.fb, .intro { animation-duration: 0.01ms !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Swipe the Startup 💘</h1>
+    <p class="tagline">AI Act Edition</p>
+    <div class="hud">
+      <span class="pill" id="cardCount">Card 1 / 15</span>
+      <span class="pill" id="score">Score: 0</span>
+      <button class="pill pill-btn" id="playHelpBtn" type="button">📜 AI Act?</button>
+    </div>
+  </header>
+  <main>
+    <section id="play">
+      <div class="play-grid">
+        <div class="game-col">
+          <div class="stage">
+            <div class="dir up" id="dirUp">⚠️ High-risk <span>↑</span></div>
+            <div class="dir left" id="dirLeft">🚫 Banned <span>←</span></div>
+            <div class="card-zone">
+              <div id="card" class="card swipe" aria-label="Startup card. Drag me left, right, up or down.">
+                <div class="avatar" id="cEmoji" aria-hidden="true">💡</div>
+                <h2 class="c-name" id="cName"></h2>
+                <p class="c-pitch" id="cPitch"></p>
+              </div>
+              <button class="done-cta" id="doneCenter" type="button" hidden>See your score 💘</button>
+            </div>
+            <div class="dir right" id="dirRight">✅ Basically fine <span>→</span></div>
+            <div class="dir down" id="dirDown">🤖 Must be transparent <span>↓</span></div>
+          </div>
+        </div>
+        <aside class="side-col">
+          <p class="side-label">The AI Act's verdict</p>
+          <div class="side-placeholder" id="sidePlaceholder">
+            <p>Swipe a card and the AI Act's take on it lands here. 📜</p>
+          </div>
+          <div id="fbSide" class="card fb" hidden aria-live="polite">
+            <div class="fb-badge" data-f="badge">✅</div>
+            <h2 class="fb-title" data-f="title">Correct!</h2>
+            <div class="fb-chips" data-f="chips"></div>
+            <p class="fb-explain" data-f="explain"></p>
+            <p class="fb-source" data-f="source"></p>
+            <button class="btn" id="doneBtn" type="button" hidden>See your score 💘</button>
+          </div>
+        </aside>
+        <p class="legend">
+          Drag the card — or press <kbd>1</kbd>–<kbd>4</kbd> — to say how the EU AI Act would treat it.
+          <span class="legend-grid">
+            <span class="lg banned">← Banned · banned, period</span>
+            <span class="lg risk">↑ High-risk · heavy rules apply</span>
+            <span class="lg trans">↓ Must be transparent · must tell people it's AI</span>
+            <span class="lg fine">→ Basically fine · no special rules</span>
+          </span>
+        </p>
+      </div>
+    </section>
+    <section id="results" hidden>
+      <h2>That's a wrap! 💘</h2>
+      <div class="final-score" id="finalScore">0 / 15</div>
+      <p class="final-title" id="finalTitle"></p>
+      <div class="recap">
+        <p class="recap-label">Your 15 swipes, graded</p>
+        <div class="recap-list" id="recapList"></div>
+      </div>
+      <div class="cta-grid">
+        <div class="cta">
+          <p class="cta-line">Building an AI product? The LUMI AI Factory offers support with AI Act questions.</p>
+          <p>Their service catalogue now includes expert consultation on Trustworthy AI development and an
+          initial risk-analysis session with the EU AI Act Compliance Checker — and for startups, SMEs and
+          academic researchers, that expert support is free of charge. And if you keep building after the
+          hackathon, the Factory's hubs in Kumpula (Helsinki), Otaniemi (Espoo) and Ostrava run an AI Lounge
+          every Friday.</p>
+        </div>
+        <div class="cta">
+          <p class="cta-line">Want to turn the vibe into a company? Helsinki Think Company has the tools.</p>
+          <p>The entrepreneurship society of the University of Helsinki — and the host of this hackathon —
+          offers free community and coworking spaces on all four campuses, plus programmes, idea competitions
+          and mentoring for people turning ideas into businesses. Its Think Company Fund has awarded over
+          €100,000 in seed funding to student startups since 2015.</p>
+        </div>
+      </div>
+      <div class="results-actions">
+        <button class="btn secondary" id="resultsHelpBtn" type="button">📜 How does the AI Act work?</button>
+        <button class="btn" id="againBtn" type="button">Play again 🔄 (shuffles the cards)</button>
+      </div>
+      <p class="credit">Made for the Make It Make Sense hackathon, organised by the LUMI AI Factory and Helsinki Think Company.</p>
+    </section>
+  </main>
+</div>
+<footer>
+  Made for the Make It Make Sense hackathon · LUMI AI Factory × Helsinki Think Company
+</footer>
+<div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="introTitle">
+  <div class="intro-panel">
+    <button class="intro-x" id="introClose" type="button" aria-label="Close this intro and start playing">✕</button>
+    <h2 class="intro-title" id="introTitle">Swipe the Startup 💘</h2>
+    <p class="intro-tag">AI Act Edition</p>
+    <p class="intro-pitch">15 AI startups just pitched you. The EU AI Act has an opinion about each one —
+    <strong>banned</strong>, <strong>high-risk</strong>, <strong>must be transparent</strong> or
+    <strong>basically fine</strong>. Swipe every card into the pile the Act would put it in.</p>
+    <h3>How to play</h3>
+    <ul class="intro-steps">
+      <li>🖐️ <strong>Drag the card</strong> in the direction of its pile — or press <kbd>1</kbd>–<kbd>4</kbd>.
+      Short drags spring back; no pressure.</li>
+      <li>📜 After each swipe you get the verdict: what the Act says, in two plain sentences, with a link
+      to the exact rule. The next card deals right away — read the verdict at your own pace.</li>
+    </ul>
+    <div class="intro-chips">
+      <span class="lg banned">🚫 Banned ← <small>banned, period</small></span>
+      <span class="lg risk">⚠️ High-risk ↑ <small>heavy rules apply</small></span>
+      <span class="lg trans">🤖 Must be transparent ↓ <small>it must tell people it's AI</small></span>
+      <span class="lg fine">✅ Basically fine → <small>no special rules</small></span>
+    </div>
+    <p class="warning">⚠️ Vibe-coded ⚡ This game was made fast and fun: the card answers are based on the
+    EU AI Act but might not be fully correct. Not legal advice.</p>
+    <button class="btn secondary intro-help" id="introHelpBtn" type="button">📜 How does the AI Act work?</button>
+    <button class="btn intro-go" id="startBtn" type="button">Let's swipe! 💘</button>
+  </div>
+</div>
+<div class="intro" id="actHelp" role="dialog" aria-modal="true" aria-labelledby="helpTitle" hidden>
+  <div class="intro-panel">
+    <button class="intro-x" id="actHelpClose" type="button" aria-label="Close the AI Act explainer">✕</button>
+    <h2 class="intro-title" id="helpTitle">How does the AI Act work? 📜</h2>
+    <p class="intro-tag">the common principles, concisely</p>
+    <div class="sum-body">
+      <p>The EU AI Act (2024) sorts AI by <strong>risk</strong>: the more harm a system could cause to
+      people, the stricter the rules it must follow.</p>
+      <ul class="sum-tiers">
+        <li><strong>🚫 Banned</strong> — practices that go against EU values (manipulating people,
+        exploiting vulnerabilities, social scoring) may never be used at all.</li>
+        <li><strong>⚠️ High-risk</strong> — AI that decides or strongly influences important things about
+        people (jobs, credit, exams, emergencies) must meet strict requirements before it may be used.</li>
+        <li><strong>🤖 Must be transparent</strong> — chatbots must say they are AI, and AI-made images,
+        text or video must be identifiable as AI.</li>
+        <li><strong>✅ Basically fine</strong> — everything else can be built and shipped without
+        new AI-specific rules.</li>
+      </ul>
+      <p>Breaking the Act can cost up to <strong>€35 million or 7% of global turnover</strong>. It has
+      been in force since August 2024, phasing in until 2027.</p>
+      <p class="sum-note">Concise, not exhaustive — and not legal advice. The full text:
+      <a href="https://artificialintelligenceact.eu/" target="_blank" rel="noopener">artificialintelligenceact.eu</a>.</p>
+    </div>
+    <button class="btn intro-go" id="actHelpDone" type="button">Got it 💘</button>
+  </div>
+</div>
+<script>
+// ⚠️ Vibe-coded ⚡ at the Helsinki Think Company × LUMI AI Factory hackathon.
+// The cards below were written against the EU AI Act (Regulation (EU) 2024/1689),
+// but this is a party game: the "correct" answers might not be fully correct.
+// Not legal advice.
+//
+// answer: 1 = Banned, 2 = High-risk, 3 = Must be transparent, 4 = Basically fine
+const CARDS = [
+  {
+    name: "VibeCheck",
+    emoji: "👁️",
+    pitch: "An AI that watches employees' webcams during video calls and scores their moods for the boss.",
+    answer: 1,
+    explanation: "The EU AI Act bans inferring emotions of people in the workplace or in education, except for medical or safety reasons — that's Article 5(1)(f). A tool that reads a team's moods from their webcams is a textbook example of the ban.",
+    source: "Art. 5(1)(f) — Prohibited AI practices"
+  },
+  {
+    name: "CramPal",
+    emoji: "🧠",
+    pitch: "A study coach that senses when you're feeling anxious or lonely and uses that to push you to study longer and buy the premium plan.",
+    answer: 1,
+    explanation: "Article 5(1)(b) of the EU AI Act bans AI systems that exploit a person's vulnerabilities — their emotional or financial state, for example — to materially distort their behaviour with harmful effects. Using your anxiety to make you grind more and pay more is exactly that.",
+    source: "Art. 5(1)(b) — Prohibited AI practices"
+  },
+  {
+    name: "HallPass",
+    emoji: "🎟️",
+    pitch: "The city's new behaviour score: stay out late, make noise, get in a public fight — and your score drops. That score then decides which shops give you discounts and which landlords take you.",
+    answer: 1,
+    explanation: "The EU AI Act bans what it calls social scoring (Article 5(1)(c)): evaluating people based on their social behaviour, and then that score leading to detrimental or disproportionate treatment in unrelated contexts. A city-behaviour score that decides your discounts and your flat is exactly that.",
+    source: "Art. 5(1)(c) — Prohibited AI practices"
+  },
+  {
+    name: "ResumeRocket",
+    emoji: "🚀",
+    pitch: "An AI that reads every grad's CV, scores each applicant, and auto-rejects the 90% it doesn't vibe with.",
+    answer: 2,
+    explanation: "AI used for recruitment or selection of people — including analysing and filtering job applications — is listed as high-risk by the Act (Article 6(2) + Annex III, point 4(a)). So before it can be used, it must pass the high-risk requirements: risk management, documentation, human oversight and CE marking.",
+    source: "Art. 6(2) + Annex III, point 4(a)"
+  },
+  {
+    name: "ExamWatch",
+    emoji: "📡",
+    pitch: "An AI that sits in the background during online exams, watches the webcam and the screen, and flags suspected cheating to the professor.",
+    answer: 2,
+    explanation: "AI intended to be used for monitoring and detecting prohibited behaviour of students during tests is explicitly listed as high-risk by the Act (Article 6(2) + Annex III, point 3(d)). Before it can sit in on a single course, it has to meet the Act's strict high-risk rules.",
+    source: "Art. 6(2) + Annex III, point 3(d)"
+  },
+  {
+    name: "CreditBite",
+    emoji: "💳",
+    pitch: "An AI that decides who gets a student loan and how much, based on your online habits and spending.",
+    answer: 2,
+    explanation: "The Act lists as high-risk any AI that evaluates the creditworthiness of a person or establishes their credit score, unless it is only used to detect financial fraud (Article 6(2) + Annex III, point 5(b)). A student-loan decision built on online habits and spending sits squarely in that high-risk list.",
+    source: "Art. 6(2) + Annex III, point 5(b)"
+  },
+  {
+    name: "ShiftBoss",
+    emoji: "📋",
+    pitch: "An AI that rates part-time warehouse workers by their behaviour and speed, then decides who gets promoted and who gets fired.",
+    answer: 2,
+    explanation: "AI used to monitor or evaluate the performance and behaviour of workers, or to make decisions about promotion or termination, is listed as high-risk by the Act (Article 6(2) + Annex III, point 4(b)). So ShiftBoss has to follow the full high-risk rulebook before it touches real employees.",
+    source: "Art. 6(2) + Annex III, point 4(b)"
+  },
+  {
+    name: "TriageGo",
+    emoji: "🚑",
+    pitch: "An AI that sorts 112 calls by urgency and decides which ambulance rolls out first.",
+    answer: 2,
+    explanation: "AI that evaluates and classifies emergency calls, or dispatches or sets the priority for emergency first-response services — including emergency patient triage — is listed as high-risk by the Act (Article 6(2) + Annex III, point 5(d)). Deciding which ambulance goes first is exactly what that list targets.",
+    source: "Art. 6(2) + Annex III, point 5(d)"
+  },
+  {
+    name: "BaristaBot",
+    emoji: "☕",
+    pitch: "A chatbot that takes your drink order and chats like a friend — it only admits it's a robot if you ask.",
+    answer: 3,
+    explanation: "Article 50(1) of the EU AI Act says people must be informed they are interacting with an AI system, unless that is obvious. A chatbot that only admits it's a robot when asked has to disclose that it's AI from the first message.",
+    source: "Art. 50(1) — Transparency obligations"
+  },
+  {
+    name: "FaceOff",
+    emoji: "🎭",
+    pitch: "An AI video app that puts your face into your professor's band so well you'd never know it's AI.",
+    answer: 3,
+    explanation: "The Act requires that AI-generated or manipulated images or videos of real persons — deep fakes — are disclosed as artificially generated or manipulated (Article 50(4)). Even if the face swap is perfect, the app has to tell viewers it's AI.",
+    source: "Art. 50(4) — Transparency obligations"
+  },
+  {
+    name: "GhostWriter",
+    emoji: "👻",
+    pitch: "An AI that writes your essays, your songs and your posts, and hands them back as if you wrote everything.",
+    answer: 3,
+    explanation: "The Act requires AI systems that generate synthetic text or images to mark their outputs in a machine-readable format as artificially generated (Article 50(2)). A tool that hands back essays 'as if you wrote them' still has to mark them as AI-made.",
+    source: "Art. 50(2) — Transparency obligations"
+  },
+  {
+    name: "ChillTune",
+    emoji: "🎧",
+    pitch: "An AI that builds you a personal lo-fi playlist every night from your listening history.",
+    answer: 4,
+    explanation: "Music recommendations are not on the Act's list of banned (Article 5) or high-risk (Annex III) uses, and no transparency duty applies to them either. So the app can ship with no special AI rules.",
+    source: "Art. 5, Art. 50 and Annex III — none apply"
+  },
+  {
+    name: "PantryPal",
+    emoji: "🥫",
+    pitch: "Point your camera at the fridge and get three meals you can actually make with what's left.",
+    answer: 4,
+    explanation: "Generating recipes from a fridge photo touches none of the Act's banned or high-risk areas (Article 5, Annex III). Nothing is banned and nothing must be disclosed, so it's basically fine.",
+    source: "Art. 5, Art. 50 and Annex III — none apply"
+  },
+  {
+    name: "CampusWander",
+    emoji: "🚶",
+    pitch: "An AI that shows you the fastest route between your lecture hall and the kebab place, in real time.",
+    answer: 4,
+    explanation: "Walking-route suggestions are not the kind of thing the Act regulates — its traffic entry only covers AI as a safety component in the management and operation of critical infrastructure (Annex III, point 2). As long as the app doesn't run the traffic lights, it's basically fine.",
+    source: "Art. 5, Art. 50 and Annex III (pt. 2) — none apply"
+  },
+  {
+    name: "DeadlineDart",
+    emoji: "🎯",
+    pitch: "An AI that watches how you spend your day, sorts your to-dos and blocks focus hours — so the thesis actually gets written.",
+    answer: 4,
+    explanation: "Tracking your own time and sorting your to-dos doesn't evaluate you, grade you, or decide wages or admissions, so it's outside the Act's high-risk list (Annex III). The Act bans reading emotions at work (Article 5) — not organising your day.",
+    source: "Art. 5 and Annex III — none apply"
+  }
+];
+// Categories: 1 Banned (←) · 2 High-risk (↑) · 3 Must be transparent (↓) · 4 Basically fine (→)
+const CATS = {
+  1: { label: "Banned",              dir: "left",  cls: "banned", key: "1" },
+  2: { label: "High-risk",           dir: "up",    cls: "risk",   key: "2" },
+  3: { label: "Must be transparent", dir: "down",  cls: "trans",  key: "3" },
+  4: { label: "Basically fine",      dir: "right", cls: "fine",   key: "4" }
+};
+
+// ---- links to the actual EU AI Act pages ----
+const ACT_HOME = "https://artificialintelligenceact.eu/";
+const REF_RE = /\b(Annex III|Art\. 50\(\d\)|Art\. 5\(\d\)\([a-h]\)|Art\. 6\(\d\)|Art\. 5)/g;
+function actUrl(ref) {
+  if (ref.indexOf("Annex") === 0) return ACT_HOME + "annex/3/";
+  if (ref.indexOf("Art. 50") === 0) return ACT_HOME + "article/50/";
+  if (ref.indexOf("Art. 6") === 0) return ACT_HOME + "article/6/";
+  return ACT_HOME + "article/5/";
+}
+function sourceHtml(src) {
+  return src.replace(REF_RE, (m) => '<a href="' + actUrl(m) + '" target="_blank" rel="noopener">' + m + "</a>");
+}
+
+const $ = (id) => document.getElementById(id);
+const cardEl    = $("card");
+const cEmoji    = $("cEmoji");
+const cName     = $("cName");
+const cPitch    = $("cPitch");
+const fbSide    = $("fbSide"); // verdict panel: below the card on small/mid screens, right edge on wide
+const sidePlaceholder = $("sidePlaceholder");
+const doneBtn   = $("doneBtn");
+const doneCenter = $("doneCenter"); // big button that takes the card's place after card 15
+const againBtn  = $("againBtn");
+const playSec   = $("play");
+const resultsSec = $("results");
+const cardCount = $("cardCount");
+const scoreEl   = $("score");
+const finalScore = $("finalScore");
+const finalTitle = $("finalTitle");
+const introEl   = $("intro");
+const introClose = $("introClose");
+const startBtn  = $("startBtn");
+
+const game = { deck: [], idx: 0, score: 0, state: "intro", history: [] };
+// state: intro | idle | anim | done (last verdict waiting for the player) | results
+window.__game = game; // exposed for organisers to poke at in the console
+let helpOpen = false;
+
+function shuffle(a) {
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function newGame() {
+  game.deck = shuffle(CARDS.map((c) => ({ ...c })));
+  game.idx = 0;
+  game.score = 0;
+  game.history = [];
+}
+
+function updateHud() {
+  cardCount.textContent = `Card ${Math.min(game.idx + 1, game.deck.length)} / ${game.deck.length}`;
+  scoreEl.textContent = `Score: ${game.score}`;
+}
+
+function renderCard() {
+  const c = game.deck[game.idx];
+  cEmoji.textContent = c.emoji;
+  cName.textContent = c.name;
+  cPitch.textContent = "“" + c.pitch + "”";
+  cardEl.classList.remove("fly-left", "fly-right", "fly-up", "fly-down");
+  cardEl.style.transform = "";
+  cardEl.style.transition = "";
+  cardEl.classList.remove("deal-in");
+  void cardEl.offsetWidth; // restart the deal-in animation
+  cardEl.classList.add("deal-in");
+  updateHud();
+}
+
+function flashDir(cat) {
+  const el = document.querySelector(".dir." + CATS[cat].dir);
+  if (!el) return;
+  el.classList.add("hot");
+  setTimeout(() => el.classList.remove("hot"), 380);
+}
+
+function choose(cat) {
+  if (game.state !== "idle" || !CATS[cat]) return;
+  game.state = "anim";
+  flashDir(cat);
+  cardEl.classList.add("fly-" + CATS[cat].dir);
+  setTimeout(() => showFeedback(cat), 540);
+}
+
+// The verdict shows in the side panel and the next card deals right away —
+// no waiting, no timer: the player reads at their own pace and swipes when ready.
+function showFeedback(chosen) {
+  const c = game.deck[game.idx];
+  const ok = chosen === c.answer;
+  if (ok) game.score++;
+  updateHud();
+  const srcHtml =
+    '<a href="' + ACT_HOME + '" target="_blank" rel="noopener">EU AI Act</a> · ' + sourceHtml(c.source);
+  fbSide.querySelector('[data-f="badge"]').textContent = ok ? "✅" : "❌";
+  const t = fbSide.querySelector('[data-f="title"]');
+  t.textContent = ok ? "Correct!" : "Not quite!";
+  t.classList.toggle("ok", ok);
+  t.classList.toggle("nope", !ok);
+  const chips = fbSide.querySelector('[data-f="chips"]');
+  chips.textContent = "";
+  const mk = (txt, cls) => {
+    const s = document.createElement("span");
+    s.className = "chip " + cls;
+    s.textContent = txt;
+    chips.appendChild(s);
+  };
+  mk("You said: " + CATS[chosen].label, CATS[chosen].cls);
+  if (!ok) mk("Actually: " + CATS[c.answer].label, CATS[c.answer].cls);
+  fbSide.querySelector('[data-f="explain"]').textContent = c.explanation;
+  fbSide.querySelector('[data-f="source"]').innerHTML = srcHtml;
+  sidePlaceholder.hidden = true;
+  const last = game.idx >= game.deck.length - 1;
+  doneBtn.hidden = !last;
+  fbSide.hidden = false;
+  fbSide.classList.remove("pop");
+  void fbSide.offsetWidth;
+  fbSide.classList.add("pop");
+  game.history.push({ name: c.name, answer: c.answer, chosen: chosen, ok: ok });
+  // the next card deals immediately — or, on the last card, the player
+  // decides when to head to the score
+  game.idx++;
+  if (last) {
+    game.state = "done";
+    // the big button takes the card's place — no page scroll, it must stay in view
+    doneCenter.hidden = false;
+    doneCenter.classList.remove("pop");
+    void doneCenter.offsetWidth;
+    doneCenter.classList.add("pop");
+    // wide screens: the panel is a fixed scroll box — keep its copy visible too
+    if (window.matchMedia("(min-width: 1240px)").matches) {
+      doneBtn.scrollIntoView({ block: "nearest" });
+    }
+  } else {
+    renderCard();
+    game.state = "idle";
+    // phone: the verdict sits below the card — make sure it's on screen
+    if (fbSide.getBoundingClientRect().bottom > window.innerHeight) {
+      fbSide.scrollIntoView({ block: "nearest" });
+    }
+  }
+}
+
+function resetVerdict() {
+  fbSide.hidden = true;
+  doneBtn.hidden = true;
+  doneCenter.hidden = true;
+  sidePlaceholder.hidden = false;
+}
+
+function titleFor(s, total) {
+  const p = s / total;
+  if (s === total) return "Fully Compliant Match 💍";
+  if (p >= 0.85) return "High risk of becoming a lawyer 📜";
+  if (p >= 0.65) return "Basically fine — investors like you 💸";
+  if (p >= 0.45) return "Transparency time: we saw you peeking at the answers 👀";
+  if (p >= 0.25) return "Banned by the judging committee 🚫";
+  return "Rejected by the EU 🇪🇺";
+}
+
+function showResults() {
+  game.state = "results";
+  window.scrollTo(0, 0);
+  finalScore.textContent = `${game.score} / ${game.deck.length}`;
+  finalTitle.textContent = titleFor(game.score, game.deck.length);
+  fillRecap();
+  playSec.hidden = true;
+  resultsSec.hidden = false;
+  againBtn.focus({ preventScroll: true });
+}
+
+function fillRecap() {
+  const list = $("recapList");
+  list.textContent = "";
+  for (const h of game.history) {
+    const row = document.createElement("div");
+    row.className = "recap-row " + (h.ok ? "ok" : "nope");
+    row.textContent = (h.ok ? "✓ " : "✗ ") + h.name + " — " + CATS[h.answer].label +
+      (h.ok ? "" : " (you said " + CATS[h.chosen].label + ")");
+    list.appendChild(row);
+  }
+}
+
+function playAgain() {
+  resultsSec.hidden = true;
+  playSec.hidden = false;
+  newGame();
+  resetVerdict();
+  renderCard();
+  game.state = "idle";
+}
+
+// ---- intro overlay ----
+function closeIntro() {
+  if (game.state !== "intro") return;
+  game.state = "idle";
+  introEl.classList.add("closing");
+  setTimeout(() => {
+    introEl.hidden = true;
+    introEl.classList.remove("closing");
+  }, 240);
+  renderCard(); // deal the first card in as the veil lifts
+}
+introClose.addEventListener("click", closeIntro);
+startBtn.addEventListener("click", closeIntro);
+
+// ---- the concise "How does the AI Act work?" explainer ----
+const helpEl = $("actHelp");
+const helpClose = $("actHelpClose");
+function openHelp() {
+  helpOpen = true;
+  helpEl.hidden = false;
+  helpClose.focus({ preventScroll: true });
+}
+function closeHelp() {
+  if (!helpOpen) return;
+  helpOpen = false;
+  helpEl.hidden = true;
+}
+$("introHelpBtn").addEventListener("click", openHelp);
+$("playHelpBtn").addEventListener("click", openHelp);
+$("resultsHelpBtn").addEventListener("click", openHelp);
+helpClose.addEventListener("click", closeHelp);
+$("actHelpDone").addEventListener("click", closeHelp);
+
+// ---- input: keyboard ----
+// intro: Enter/Space closes · help: Enter/Space/Esc close
+// idle: 1–4 choose · done (last verdict): Enter/Space → results · results: Enter/Space replays
+window.addEventListener("keydown", (e) => {
+  if (helpOpen) {
+    if (e.key === "Enter" || e.key === " " || e.key === "Escape") { e.preventDefault(); closeHelp(); }
+    return;
+  }
+  if (game.state === "intro") {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); closeIntro(); }
+    return;
+  }
+  if (game.state === "idle" && ["1", "2", "3", "4"].includes(e.key)) {
+    choose(parseInt(e.key, 10));
+    return;
+  }
+  const ae = document.activeElement;
+  if (ae && ae.tagName === "BUTTON" && (e.key === "Enter" || e.key === " ")) return; // the button itself handles it
+  if (e.key === "Enter" || e.key === " " || e.key === "Escape") {
+    if (game.state === "done" && e.key !== "Escape") { e.preventDefault(); showResults(); }
+    else if (game.state === "results" && e.key !== "Escape") { e.preventDefault(); playAgain(); }
+  }
+});
+
+againBtn.addEventListener("click", playAgain);
+doneBtn.addEventListener("click", showResults);
+doneCenter.addEventListener("click", showResults);
+
+// ---- input: dragging the card (pointer events cover touch and mouse) ----
+let drag = null;
+const DRAG_THRESHOLD = 70;
+
+function clearHot() {
+  document.querySelectorAll(".dir").forEach((d) => d.classList.remove("hot"));
+}
+
+cardEl.addEventListener("pointerdown", (e) => {
+  if (game.state !== "idle") return;
+  e.preventDefault();
+  drag = { id: e.pointerId, x0: e.clientX, y0: e.clientY };
+  try { cardEl.setPointerCapture(e.pointerId); } catch (_) { /* synthetic pointers etc. */ }
+  cardEl.classList.add("dragging");
+  cardEl.style.transition = "none";
+});
+
+cardEl.addEventListener("pointermove", (e) => {
+  if (!drag || e.pointerId !== drag.id) return;
+  const dx = e.clientX - drag.x0;
+  const dy = e.clientY - drag.y0;
+  if (Math.abs(dx) < 4 && Math.abs(dy) < 4) return;
+  cardEl.style.transition = "transform 0.06s linear"; // light trailing so the card glides, not snaps
+  cardEl.style.transform = `translate(${dx}px, ${dy}px) rotate(${dx * 0.05}deg)`;
+  const dir = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? "right" : "left") : (dy > 0 ? "down" : "up");
+  clearHot();
+  document.querySelector(".dir." + dir).classList.add("hot");
+});
+
+function endDrag(e) {
+  if (!drag || e.pointerId !== drag.id) return;
+  const x = e.clientX - drag.x0;
+  const y = e.clientY - drag.y0;
+  drag = null;
+  cardEl.classList.remove("dragging");
+  clearHot();
+  cardEl.style.transition = "transform 0.32s cubic-bezier(0.22, 1, 0.36, 1)"; // gentle spring back
+  cardEl.style.transform = "";
+  if (Math.abs(x) < DRAG_THRESHOLD && Math.abs(y) < DRAG_THRESHOLD) return; // spring back
+  const cat = Math.abs(x) > Math.abs(y) ? (x > 0 ? 4 : 1) : (y > 0 ? 3 : 2);
+  setTimeout(() => {
+    cardEl.style.transition = "";
+    choose(cat);
+  }, 160);
+}
+cardEl.addEventListener("pointerup", endDrag);
+cardEl.addEventListener("pointercancel", endDrag);
+
+// ---- go ----
+newGame();
+renderCard();
+startBtn.focus();
+</script>
+</body>
+</html>

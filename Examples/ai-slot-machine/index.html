@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Startup Idea Slot Machine</title>
+    <style>
+        :root {
+            --bg-color: #020617;
+            --machine-color: #1e1b4b;
+            --accent-color: #06b6d4;
+            --highlight-color: #f472b6;
+            --text-color: #f8fafc;
+            --reel-bg: #000000;
+            --spin-color: #fbbf24;
+            --gold: #facc15;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .game-header {
+            margin-bottom: 1rem;
+            max-width: 800px;
+            padding: 1rem;
+            background: rgba(30, 27, 75, 0.6);
+            border-radius: 20px;
+            border: 2px solid var(--accent-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .game-header h1 {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 0.2rem;
+        }
+
+        .game-header p {
+            font-size: 1.1rem;
+            line-height: 1.4;
+            color: #cbd5e1;
+        }
+
+        .game-header .controls-hint {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            font-size: 0.9rem;
+        }
+
+        #example-btn {
+            background: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+            padding: 5px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: all 0.2s;
+            margin-top: 0.5rem;
+        }
+
+        #example-btn:hover {
+            background: var(--gold);
+            color: var(--bg-color);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .machine-frame {
+            background: linear-gradient(145deg, #312e81, #1e1b4b);
+            padding: 1.5rem 2rem;
+            border-radius: 40px;
+            border: 8px solid #4338ca;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            width: fit-content;
+        }
+
+        .slot-machine {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .reel-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+            width: 280px;
+        }
+
+        .reel-label {
+            font-size: 1rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: var(--gold);
+            letter-spacing: 1px;
+        }
+
+        .reel {
+            background-color: var(--reel-bg);
+            border: 6px solid #0f172a;
+            border-radius: 15px;
+            height: 180px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 0 50px #000;
+        }
+
+        .reel::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(255,255,255,0.1) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.3) 100%);
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .reel-strip {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            z-index: 1;
+        }
+
+        .reel-item {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            line-height: 1.1;
+            text-align: center;
+            color: #ffffff !important;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .lock-toggle {
+            background: #0f172a;
+            color: white;
+            border: 3px solid var(--accent-color);
+            padding: 6px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+
+        .lock-toggle.locked {
+            background: var(--accent-color);
+            color: #000;
+            box-shadow: 0 0 15px var(--accent-color);
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+        }
+
+        #spin-button {
+            background: radial-gradient(circle, #fbbf24, #d97706);
+            color: #000;
+            border: 5px solid #fff;
+            padding: 1rem 3rem;
+            font-size: 2.5rem;
+            font-weight: 900;
+            border-radius: 80px;
+            cursor: pointer;
+            box-shadow: 0 8px 0 #92400e, 0 15px 30px rgba(0,0,0,0.5);
+            transition: all 0.1s;
+            text-transform: uppercase;
+        }
+
+        #spin-button:active {
+            transform: translateY(5px);
+            box-shadow: 0 3px 0 #92400e, 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        #spin-button:disabled {
+            background: #475569;
+            color: #94a3b8;
+            box-shadow: 0 5px 0 #1e293b;
+            border-color: #64748b;
+        }
+
+        .result-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        #sentence {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 900;
+            color: var(--highlight-color);
+            line-height: 1.2;
+            opacity: 0;
+            transition: opacity 0.5s;
+            text-shadow: 0 0 20px rgba(244, 114, 182, 0.3);
+        }
+
+        #pitch-text {
+            font-size: clamp(1.2rem, 2vw, 1.8rem);
+            color: #cbd5e1;
+            max-width: 800px;
+            line-height: 1.5;
+            min-height: 1.5em;
+            margin: 0.5rem 0;
+            font-style: italic;
+        }
+
+        #countdown {
+            font-size: clamp(4rem, 10vw, 7rem);
+            font-weight: 900;
+            color: white;
+            display: none;
+            text-shadow: 0 0 30px rgba(255,255,255,0.4);
+            line-height: 1;
+        }
+
+        .questions-container {
+            opacity: 0;
+            transition: opacity 0.5s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .questions-label {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .questions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .question {
+            background: rgba(30, 41, 59, 0.8);
+            padding: 0.7rem 1.2rem;
+            border-radius: 12px;
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            font-weight: 700;
+            border-bottom: 4px solid var(--accent-color);
+            max-width: 300px;
+            color: #cbd5e1;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 10px;
+            font-size: 0.9rem;
+            opacity: 0.6;
+            font-weight: 600;
+        }
+
+        .blur {
+            filter: blur(10px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="game-header">
+        <h1>AI Startup Idea Slot Machine</h1>
+        <p>Lock the reels you like, spin for a wild combination, and pitch your idea before the buzzer!</p>
+        <div class="controls-hint">
+            <span>⚙️ Lock: Buttons</span>
+            <span>🎰 Spin: SPACE</span>
+            <span>🖥️ Fullscreen: F</span>
+        </div>
+        <button id="example-btn">See an Example</button>
+    </div>
+
+    <div class="container">
+        <div class="machine-frame">
+            <div class="slot-machine">
+                <div class="reel-container">
+                    <div class="reel-label">The Problem</div>
+                    <div class="reel" id="reel-0">
+                        <div class="reel-strip" id="strip-0"></div>
+                    </div>
+                    <button class="lock-toggle" id="lock-0">🔓 Unlocked</button>
+                </div>
+                <div class="reel-container">
+                    <div class="reel-label">The AI Superpower</div>
+                    <div class="reel" id="reel-1">
+                        <div class="reel-strip" id="strip-1"></div>
+                    </div>
+                    <button class="lock-toggle" id="lock-1">🔓 Unlocked</button>
+                </div>
+                <div class="reel-container">
+                    <div class="reel-label">The Customer</div>
+                    <div class="reel" id="reel-2">
+                        <div class="reel-strip" id="strip-2"></div>
+                    </div>
+                    <button class="lock-toggle" id="lock-2">🔓 Unlocked</button>
+                </div>
+            </div>
+            <div class="controls">
+                <button id="spin-button">SPIN</button>
+            </div>
+        </div>
+
+        <div class="result-area">
+            <div id="sentence"></div>
+            <div id="pitch-text"></div>
+            <div id="countdown">30</div>
+            <div class="questions-container" id="questions-container">
+                <div class="questions-label">Pitch your idea! Answer these:</div>
+                <div class="questions">
+                    <div class="question">What data would you need?</div>
+                    <div class="question">How much compute would it take?</div>
+                    <div class="question">Who would you need on your team?</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>Make It Make Sense hackathon · Helsinki Think Company × LUMI AI Factory</footer>
+
+    <script>
+        const PROBLEMS = [
+            "the student housing crisis", "inefficient waste sorting",
+            "complex EU grant apps", "Nordic language barriers",
+            "winter commute delays", "confusing student taxes",
+            "dormitory food waste", "limited internship access",
+            "sustainable EU travel", "seasonal study stress",
+            "tight campus budgets", "government bureaucracy",
+            "unhealthy campus eating", "remote team friction",
+            "winter plant death"
+        ];
+        const SUPERPOWERS = [
+            "find hidden patterns", "summarize long documents",
+            "generate visual prototypes", "translate speech instantly",
+            "predict equipment failure", "create personalized plans",
+            "polish professional text", "optimize city routes",
+            "identify objects from photos", "convert audio to lists",
+            "brainstorm new ideas", "mimic a writing style",
+            "structure messy notes", "analyze vocal emotion",
+            "suggest perfect products"
+        ];
+        const CUSTOMERS = [
+            "local bakery owners", "exchange students",
+            "city bike crews", "sustainable fashion brands",
+            "overworked PhDs", "city planners",
+            "organic farmers", "budget backpackers",
+            "remote architects", "local librarians",
+            "parents of toddlers", "urban gardeners",
+            "indie game devs", "small café owners",
+            "student union leaders"
+        ];
+
+        const DATA = [PROBLEMS, SUPERPOWERS, CUSTOMERS];
+        const ITEM_HEIGHT = 180;
+        const strips = [document.getElementById('strip-0'), document.getElementById('strip-1'), document.getElementById('strip-2')];
+        const locks = [document.getElementById('lock-0'), document.getElementById('lock-1'), document.getElementById('lock-2')];
+        const spinBtn = document.getElementById('spin-button');
+        const exampleBtn = document.getElementById('example-btn');
+        const sentenceEl = document.getElementById('sentence');
+        const pitchEl = document.getElementById('pitch-text');
+        const countdownEl = document.getElementById('countdown');
+        const questionsContainer = document.getElementById('questions-container');
+
+        let isSpinning = false;
+        let lockStates = [false, false, false];
+        let countdownInterval = null; // Store interval reference globally
+
+        function init() {
+            DATA.forEach((list, reelIndex) => {
+                const strip = strips[reelIndex];
+                const content = [];
+                for (let i = 0; i < 40; i++) {
+                    content.push(...list);
+                }
+                content.forEach(text => {
+                    const div = document.createElement('div');
+                    div.className = 'reel-item';
+                    div.textContent = text;
+                    strip.appendChild(div);
+                });
+            });
+        }
+
+        function toggleLock(index) {
+            lockStates[index] = !lockStates[index];
+            locks[index].classList.toggle('locked');
+            locks[index].textContent = lockStates[index] ? '🔒 Locked' : '🔓 Unlocked';
+        }
+        locks.forEach((lock, i) => lock.onclick = () => toggleLock(i));
+
+        async function spin(forcedResults = null) {
+            if (isSpinning) return;
+            isSpinning = true;
+            spinBtn.disabled = true;
+            exampleBtn.disabled = true;
+            
+            // Stop any existing timer immediately
+            if (countdownInterval) {
+                clearInterval(countdownInterval);
+                countdownInterval = null;
+            }
+
+            sentenceEl.style.opacity = 0;
+            pitchEl.textContent = '';
+            countdownEl.style.display = 'none';
+            questionsContainer.style.opacity = 0;
+
+            const results = [];
+            const spinPromises = DATA.map(async (list, i) => {
+                let randomIndex;
+                if (forcedResults) {
+                    randomIndex = DATA[i].indexOf(forcedResults[i]);
+                } else if (lockStates[i]) {
+                    const currentTransform = parseInt(strips[i].style.transform.replace('translateY(', '').replace('px)', '')) || 0;
+                    randomIndex = Math.abs(currentTransform / ITEM_HEIGHT) % list.length;
+                } else {
+                    randomIndex = Math.floor(Math.random() * list.length);
+                }
+                
+                results[i] = list[randomIndex];
+                
+                if (!forcedResults || !lockStates[i]) {
+                    const rotations = 7 + Math.floor(Math.random() * 5);
+                    const finalY = -((rotations * list.length + randomIndex) * ITEM_HEIGHT);
+                    strips[i].classList.add('blur');
+                    strips[i].style.transition = `transform ${2.5 + i * 0.6}s cubic-bezier(0.15, 0, 0.15, 1)`;
+                    strips[i].style.transform = `translateY(${finalY}px)`;
+                    await new Promise(resolve => setTimeout(resolve, (2500 + i * 600)));
+                    strips[i].classList.remove('blur');
+                }
+            });
+
+            await Promise.all(spinPromises);
+            sentenceEl.textContent = `Use AI to ${results[1]} to solve ${results[0]} for ${results[2]}`;
+            sentenceEl.style.opacity = 1;
+            
+            if (forcedResults) {
+                await runExamplePitch();
+            } else {
+                questionsContainer.style.opacity = 1;
+                startCountdown();
+            }
+            
+            isSpinning = false;
+            spinBtn.disabled = false;
+            exampleBtn.disabled = false;
+        }
+
+        async function runExamplePitch() {
+            pitchEl.textContent = "...";
+            await new Promise(resolve => setTimeout(resolve, 3000));
+            
+            const pitch = "We will analyze unused commercial zoning and urban flow data to find hidden pockets of space. Our AI helps city planners rapidly identify underutilized buildings and convert them into sustainable student pods, cutting housing wait times by 40%.";
+            const words = pitch.split(' ');
+            pitchEl.textContent = '';
+            
+            for (let word of words) {
+                pitchEl.textContent += word + ' ';
+                await new Promise(resolve => setTimeout(resolve, 100));
+            }
+        }
+
+        function startCountdown() {
+            // Safety double-clear
+            if (countdownInterval) clearInterval(countdownInterval);
+            
+            countdownEl.style.display = 'block';
+            let timeLeft = 30;
+            countdownEl.textContent = timeLeft;
+            
+            countdownInterval = setInterval(() => {
+                timeLeft--;
+                countdownEl.textContent = timeLeft;
+                if (timeLeft <= 0) {
+                    clearInterval(countdownInterval);
+                    countdownInterval = null;
+                    playBuzzer();
+                }
+            }, 1000);
+        }
+
+        function playBuzzer() {
+            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            oscillator.type = 'square';
+            oscillator.frequency.setValueAtTime(150, audioCtx.currentTime);
+            oscillator.frequency.exponentialRampToValueAtTime(40, audioCtx.currentTime + 0.6);
+            gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.6);
+            oscillator.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            oscillator.start();
+            oscillator.stop(audioCtx.currentTime + 0.6);
+        }
+
+        spinBtn.onclick = () => spin();
+        exampleBtn.onclick = () => spin([
+            "the student housing crisis", 
+            "find hidden patterns", 
+            "city planners"
+        ]);
+
+        window.addEventListener('keydown', (e) => {
+            if (e.code === 'Space') { e.preventDefault(); spin(); }
+            if (e.key.toLowerCase() === 'f') {
+                if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(() => {});
+                else document.exitFullscreen();
+            }
+        });
+        init();
+    </script>
+</body>
+</html>

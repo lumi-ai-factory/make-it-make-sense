@@ -1,0 +1,10 @@
+Main colours
+* White: CMYK: C0 M0 Y0 K0, RGB: R255 G255 B255, HEX: #ffffff
+* Black: CMYK: C0 M0 Y0 K100, RGB: R35 G31 B32, HEX: #231f20
+
+Additional colours
+* Purple: CMYK: C60 M55 Y0 K0, RGB: R116 G119 B184, HEX: #7477b8
+* Blue: CMYK: C85 M52 Y27 K12, RGB: R44 G103 B137, HEX: #2c6789
+
+Effect colour
+* Magenta: CMYK: C0 M100 Y0 K0, RGB: R236 G0 B140, HEX: #ec008c

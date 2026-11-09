@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Two Guides</title>
+<style>
+:root {
+  /* Think Company — real brand colours from their website */
+  --tc-primary:   #e65c17;   /* vibrant orange */
+  --tc-primary-light: #f9ede4;
+  --tc-accent:    #351c4f;   /* deep purple */
+  --tc-accent-bg: #eee9f6;
+  --tc-yellow:    #fcb900;   /* warm yellow */
+  --tc-green:     #3ff3b1;   /* mint green accent */
+
+  /* LUMI AI Factory — real brand colours from their website */
+  --aif-primary:  #0693e3;   /* bright blue */
+  --aif-primary-dark: #046ab5;
+  --aif-blue-light: #e8f4fd;
+  --aif-purple:   #9b51e0;   /* purple accent */
+  --aif-purple-light: #f3eafc;
+  --aif-red:      #d8000c;
+  --aif-mint:     #7bdcb5;
+
+  /* Shared palette */
+  --bg:           #f7f5f2;
+  --card-bg:      #ffffff;
+  --text:         #1a1a1a;
+  --text-muted:   #6b7280;
+  --border:       #e5e2dc;
+  --error:        #b23b2e;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100vh;
+  overflow: hidden;
+  font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+}
+
+#app-wrap {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-width: 1280px;
+  margin: 0 auto;
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  background: var(--bg);
+}
+
+/* ═══ PAGE HEADER ═══ */
+#page-header {
+  padding: 1.2rem 1.5rem 0.9rem;
+  border-bottom: 2px solid var(--border);
+  background: var(--card-bg);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+#page-header h1 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+
+#page-header h1 span.tc { color: var(--tc-primary); }
+#page-header h1 span.aif { color: var(--aif-primary); }
+
+#page-header .subtitle {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+
+#ask-form { display: flex; flex-direction: column; gap: 0.5rem; }
+
+#question {
+  width: 100%;
+  font: inherit;
+  font-size: 0.95rem;
+  padding: 0.7rem 1rem;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg);
+  resize: none;
+  height: 2.8rem;
+  line-height: 1.4;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+#question:focus {
+  outline: none;
+  border-color: var(--aif-primary);
+  box-shadow: 0 0 0 3px rgba(6,147,227,0.12);
+}
+#question::placeholder { color: #b0b8c2; }
+
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+#ask-btn {
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 0.55rem 1.6rem;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--aif-primary), var(--aif-purple));
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(6,147,227,0.25);
+  transition: transform 0.15s, box-shadow 0.2s;
+}
+#ask-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(6,147,227,0.3); }
+#ask-btn:disabled { opacity: 0.55; cursor: wait; transform: none; }
+
+#form-msg { color: var(--error); font-size: 0.78rem; min-width: 2rem; }
+#char-hint { margin-left: auto; font-size: 0.72rem; color: var(--text-muted); }
+#char-hint.over { color: var(--error); }
+
+.examples {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.examples .label { color: var(--text-muted); font-size: 0.76rem; font-weight: 500; }
+
+.example {
+  font: inherit;
+  font-size: 0.73rem;
+  padding: 0.3rem 0.8rem;
+  border: 1.5px solid var(--border);
+  border-radius: 999px;
+  background: var(--card-bg);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.example:hover {
+  border-color: var(--aif-primary);
+  color: var(--aif-primary);
+  background: var(--aif-blue-light);
+}
+
+/* ═══ SPLIT PANELS ═══ */
+#split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 0;
+  flex: 1;
+}
+
+/* Each column */
+.col {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--card-bg);
+  position: relative;
+}
+.col.tc { border-right: 1px solid var(--border); }
+
+/* Coloured top bar — brand identity */
+.col-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.2rem 0.6rem;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.col-header img {
+  max-height: 26px;
+  max-width: 90px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.col-header h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.col.tc .col-header h2 { color: var(--tc-primary); }
+.col.aif .col-header h2 { color: var(--aif-primary); }
+
+.col-tag {
+  font-size: 0.68rem;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-weight: 600;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+.col.tc .col-tag { background: var(--tc-primary-light); color: var(--tc-primary); }
+.col.aif .col-tag { background: var(--aif-blue-light); color: var(--aif-primary); }
+
+/* ═══ ANSWER AREA ═══ */
+.answer-area {
+  flex: 1 1 auto;
+  min-height: 0;
+  font-size: 0.93rem;
+  line-height: 1.65;
+  padding: 0.9rem 1.2rem;
+  overflow-y: auto;
+  color: var(--text);
+}
+.answer-area .placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 0.88rem;
+}
+.answer-area .err { color: var(--error); }
+
+.answer-area .loading {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+.answer-area .loading .d {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 0.2rem;
+  animation: pulse 1s infinite ease-in-out;
+  vertical-align: middle;
+}
+.loading .d:nth-child(2) { animation-delay: 0.15s; }
+.loading .d:nth-child(3) { animation-delay: 0.3s; }
+@keyframes pulse {
+  0%, 100% { opacity: 0.25; transform: scale(0.8); }
+  50%      { opacity: 1;    transform: scale(1.1); }
+}
+
+/* ═══ CITATION BADGES ═══ */
+.cite {
+  display: inline-block;
+  font-size: 0.64rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0.15em 0.5em;
+  margin: 0.02em;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  vertical-align: 0.08em;
+  transition: filter 0.15s, transform 0.1s;
+}
+.cite:hover { filter: brightness(1.1); transform: scale(1.08); }
+
+.col.tc .cite {
+  background: var(--tc-primary);
+  color: #fff;
+}
+.col.aif .cite {
+  background: var(--aif-primary);
+  color: #fff;
+}
+
+/* ═══ SOURCES PANEL ═══ */
+.sources-panel {
+  flex-shrink: 0;
+  border-top: 2px solid var(--border);
+  padding: 0.5rem 1.2rem 0.7rem;
+  max-height: 26vh;
+  overflow-y: auto;
+  background: #fafaf8;
+  margin-bottom: 16px;
+}
+
+.sources-panel h3 {
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 0.45rem;
+}
+
+/* Coloured left border per guide */
+.sources-panel::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+}
+.col.tc .sources-panel::before { background: var(--tc-primary); }
+.col.aif .sources-panel::before { background: var(--aif-primary); }
+
+.excerpt {
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--border);
+  border-radius: 6px;
+  padding: 0.4rem 0.6rem;
+  margin-bottom: 0.35rem;
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+.col.tc .excerpt { border-left-color: var(--tc-yellow); }
+.col.aif .excerpt { border-left-color: var(--aif-mint); }
+.excerpt.focused {
+  box-shadow: 0 0 0 2px var(--aif-primary);
+  border-color: var(--aif-primary);
+}
+
+.excerpt-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+  margin-bottom: 0.2rem;
+  font-size: 0.7rem;
+  flex-wrap: wrap;
+}
+.excerpt-n {
+  font-weight: 700;
+  color: var(--text-muted);
+}
+.col.tc .excerpt-n { color: var(--tc-primary); }
+.col.aif .excerpt-n { color: var(--aif-primary); }
+
+.excerpt-head a {
+  font-size: 0.72rem;
+  color: var(--aif-primary);
+  word-break: break-word;
+  text-decoration: none;
+  font-weight: 500;
+}
+.excerpt-head a:hover { text-decoration: underline; }
+
+.excerpt-text {
+  font-size: 0.79rem;
+  color: #3a4149;
+  line-height: 1.5;
+}
+.excerpt-text mark {
+  background: #fde68a;
+  padding: 0.1em 0.25em;
+  border-radius: 2px;
+}
+
+/* ═══ PHONE: STACK ═══ */
+@media (max-width: 720px) {
+  #split { grid-template-columns: 1fr; }
+  .col.tc { border-right: none; border-bottom: 1px solid var(--border); }
+  #page-header { padding: 0.8rem 1rem 0.5rem; }
+  .col-header, .answer-area, .sources-panel { padding-left: 0.9rem; padding-right: 0.9rem; }
+}
+</style>
+</head>
+<body>
+
+<div id="app-wrap">
+
+<div id="page-header">
+  <h1>
+    <span class="tc">Two</span> <span class="aif">Guides</span>
+  </h1>
+  <p class="subtitle">Ask anything about starting a company or building AI — each guide answers from its own website only.</p>
+  <form id="ask-form">
+    <textarea id="question" rows="2" placeholder="Ask anything about starting a company or building AI…"></textarea>
+    <div class="form-row">
+      <button id="ask-btn" type="submit">Ask the guides</button>
+      <span id="form-msg" role="alert"></span>
+      <span id="char-hint"></span>
+    </div>
+    <div class="examples">
+      <span class="label">Try one:</span>
+      <button type="button" class="example">I have an idea for an AI app, where do I start?</button>
+      <button type="button" class="example">Can I get free computing power as a student?</button>
+      <button type="button" class="example">How do I find a co-founder?</button>
+      <button type="button" class="example">What does the EU AI Act mean for my startup?</button>
+    </div>
+  </form>
+</div>
+
+<div id="split">
+
+  <!-- THINK COMPANY -->
+  <div class="col tc" id="col-thinkcompany">
+    <div class="col-header">
+      <img src="static/brand/thinkcompany.png" alt="Think Company">
+      <h2>Helsinki Think Company</h2>
+      <span class="col-tag">Guide 1</span>
+    </div>
+    <div class="answer-area" data-answer>
+      <span class="placeholder">Waiting for a question…</span>
+    </div>
+    <div class="sources-panel">
+      <h3>Retrieved excerpts</h3>
+      <div data-excerpts></div>
+    </div>
+  </div>
+
+  <!-- LUMI AIF -->
+  <div class="col aif" id="col-aif">
+    <div class="col-header">
+      <img src="static/brand/aif.png" alt="LUMI AI Factory">
+      <h2>LUMI AI Factory</h2>
+      <span class="col-tag">Guide 2</span>
+    </div>
+    <div class="answer-area" data-answer>
+      <span class="placeholder">Waiting for a question…</span>
+    </div>
+    <div class="sources-panel">
+      <h3>Retrieved excerpts</h3>
+      <div data-excerpts></div>
+    </div>
+  </div>
+
+</div>
+
+</div><!-- / #app-wrap -->
+
+<script>
+const GUIDES = ["thinkcompany", "aif"];
+const MAX_LEN = 500;
+let lastQuestion = "";
+let guideText = {};
+
+const STOP_WORDS = new Set([
+  "the","a","an","is","are","was","were","be","been","being","have","has","had",
+  "do","does","did","will","would","could","should","shall","may","might","must",
+  "can","to","of","in","for","on","with","at","by","from","as","into","through",
+  "during","before","after","above","below","between","out","off","up","about",
+  "that","this","these","those","it","its","what","which","who","whom","how",
+  "why","when","where","not","no","nor","but","and","or","if","then","than",
+  "too","very","just","also","any","each","every","all","own","such","some",
+  "my","your","his","her","our","their","we","you","they","me","him","us",
+  "them","so","up","way","like","get","got","make","makes","making","really",
+]);
+
+/* ── Highlight question words in excerpts ── */
+function questionWords(q) {
+  const words = q.toLowerCase().split(/[^\p{L}]+/u).filter(w => w.length > 2);
+  return [...new Set(words.filter(w => !STOP_WORDS.has(w)))];
+}
+
+function highlightText(el, text, words) {
+  el.textContent = "";
+  if (!text || !words.length) { el.textContent = text; return; }
+  const lower = text.toLowerCase();
+  const isLetter = (ch) => /\p{L}/u.test(ch);
+  const frag = document.createDocumentFragment();
+  let i = 0;
+  while (i < text.length) {
+    let best = 0;
+    for (const w of words) {
+      if (w.length <= best) continue;
+      if (!lower.startsWith(w, i)) continue;
+      const before = i > 0 ? text[i - 1] : " ";
+      const after = i + w.length < text.length ? text[i + w.length] : " ";
+      if (!isLetter(before) && !isLetter(after)) best = w.length;
+    }
+    if (best) {
+      const mark = document.createElement("mark");
+      mark.textContent = text.slice(i, i + best);
+      frag.appendChild(mark);
+      i += best;
+    } else {
+      let next = text.length;
+      for (const w of words) {
+        const idx = lower.indexOf(w, i + 1);
+        if (idx !== -1 && idx < next) next = idx;
+      }
+      if (i < next) frag.appendChild(document.createTextNode(text.slice(i, next)));
+      i = next;
+    }
+  }
+  el.appendChild(frag);
+}
+
+/* ── Build excerpt cards ── */
+function buildReadPanel(guideKey, sources) {
+  const col = document.getElementById("col-" + guideKey);
+  const box = col.querySelector("[data-excerpts]");
+  box.textContent = "";
+  const words = questionWords(lastQuestion);
+  for (const s of sources || []) {
+    const ex = document.createElement("div");
+    ex.className = "excerpt";
+    ex.setAttribute("data-n", s.n);
+    const head = document.createElement("div");
+    head.className = "excerpt-head";
+    const n = document.createElement("span");
+    n.className = "excerpt-n";
+    n.textContent = "[" + s.n + "]";
+    const a = document.createElement("a");
+    a.href = s.url;
+    a.target = "_blank";
+    a.rel = "noopener";
+    a.textContent = s.title;
+    head.append(n, a);
+    const textEl = document.createElement("div");
+    textEl.className = "excerpt-text";
+    highlightText(textEl, s.text, words);
+    ex.append(head, textEl);
+    box.appendChild(ex);
+  }
+}
+
+/* ── Focus excerpt on citation click ── */
+function focusExcerpt(guideKey, n) {
+  const col = document.getElementById("col-" + guideKey);
+  const ex = col.querySelector('.excerpt[data-n="' + n + '"]');
+  if (!ex) return;
+  ex.scrollIntoView({ behavior: "smooth", block: "center" });
+  ex.classList.add("focused");
+  setTimeout(() => ex.classList.remove("focused"), 1600);
+}
+
+/* ── Render answer text with citation badges ── */
+function renderAnswer(guideKey, text) {
+  const col = document.getElementById("col-" + guideKey);
+  const answer = col.querySelector("[data-answer]");
+  answer.textContent = "";
+  if (!text) return;
+  const lines = text.split("\n");
+  lines.forEach((line, lineIdx) => {
+    for (const part of line.split(/(\[\d+\])/g)) {
+      if (!part) continue;
+      const m = part.match(/^\[(\d+)\]$/);
+      if (m) {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "cite";
+        b.textContent = part;
+        b.setAttribute("data-n", m[1]);
+        b.addEventListener("click", () => focusExcerpt(guideKey, m[1]));
+        answer.appendChild(b);
+      } else {
+        answer.appendChild(document.createTextNode(part));
+      }
+    }
+    if (lineIdx < lines.length - 1) answer.appendChild(document.createElement("br"));
+  });
+}
+
+/* ── SSE parsing ── */
+let rawBuf = "";
+
+function flushSSE() {
+  const end = rawBuf.indexOf("\n\n");
+  if (end === -1) return false;
+  const frame = rawBuf.slice(0, end);
+  rawBuf = rawBuf.slice(end + 2);
+
+  let event = null;
+  let data = "";
+  const lines = frame.split("\n");
+  for (const line of lines) {
+    if (line.startsWith("event: ")) event = line.slice(7);
+    else if (line.startsWith("data: ")) data += line.slice(6);
+  }
+  if (event && data) {
+    if (event === "sources") {
+      try { data = JSON.parse(data); } catch {}
+    } else {
+      try { data = JSON.parse(data); } catch {}
+    }
+    handleSSE(event, data);
+  }
+  return true;
+}
+
+/* ── SSE handler ── */
+function handleSSE(event, data) {
+  if (event === "sources") {
+    // data is already parsed by flushSSE, no need to JSON.parse again
+    for (const key of GUIDES) {
+      if (key in data && data[key].length > 0) {
+        buildReadPanel(key, data[key]);
+        const col = document.getElementById("col-" + key);
+        const answer = col.querySelector("[data-answer]");
+        if (answer.querySelector(".placeholder")) {
+          answer.innerHTML = '<span class="loading">reading <span class="d"></span><span class="d"></span><span class="d"></span></span>';
+        }
+      }
+    }
+  } else if (event === "token") {
+    const text = data;
+    if (!text) return;
+    const parts = text.split("\t", 2);
+    if (parts.length < 2) return;
+    const key = parts[0], token = parts[1];
+    if (!guideText[key]) guideText[key] = "";
+    guideText[key] += token;
+    renderAnswer(key, guideText[key].replace(/^\s+/, ""));
+  } else if (event === "content") {
+    const parts = data.split("\t", 2);
+    if (parts.length < 2) return;
+    const key = parts[0], text = parts[1];
+    guideText[key] = text;
+    renderAnswer(key, text);
+  } else if (event === "error") {
+    const parts = data.split("\t", 2);
+    if (parts.length < 2) return;
+    const col = document.getElementById("col-" + parts[0]);
+    const answer = col.querySelector("[data-answer]");
+    answer.innerHTML = '<p class="err">' + parts[1] + "</p>";
+    guideText[parts[0]] = "";
+  }
+}
+
+/* ── Stream question ── */
+async function streamQuestion(question) {
+  const resp = await fetch("/api/ask", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ question }),
+  });
+  const reader = resp.body.getReader();
+  const dec = new TextDecoder();
+  let buf = "";
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    rawBuf += dec.decode(value, { stream: true });
+    while (flushSSE()) {}
+  }
+}
+
+/* ── UI ── */
+const form = document.getElementById("ask-form");
+const q = document.getElementById("question");
+const btn = document.getElementById("ask-btn");
+const hint = document.getElementById("char-hint");
+const msg = document.getElementById("form-msg");
+
+async function submitQuestion() {
+  const question = q.value.trim();
+  msg.textContent = "";
+  if (!question) { msg.textContent = "Write a question first."; return; }
+  if (question.length > MAX_LEN) {
+    msg.textContent = "Please keep the question under " + MAX_LEN + " characters.";
+    return;
+  }
+  lastQuestion = question;
+  btn.disabled = true;
+  guideText = {};
+
+  for (const key of GUIDES) {
+    const col = document.getElementById("col-" + key);
+    col.querySelector("[data-answer]").innerHTML =
+      '<span class="loading">reading <span class="d"></span><span class="d"></span><span class="d"></span></span>';
+    col.querySelector("[data-excerpts]").textContent = "";
+  }
+
+  try {
+    await streamQuestion(question);
+  } catch (e) {
+    msg.textContent = "Could not reach the server.";
+    for (const key of GUIDES) {
+      const a = document.getElementById("col-" + key).querySelector("[data-answer]");
+      a.innerHTML = '<span class="err">Connection lost.</span>';
+    }
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+form.addEventListener("submit", (e) => { e.preventDefault(); submitQuestion(); });
+q.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); submitQuestion(); }
+});
+q.addEventListener("input", () => {
+  const len = q.value.trim().length;
+  hint.textContent = len > MAX_LEN ? len + "/" + MAX_LEN + " — too long!" : (len ? len + "/" + MAX_LEN : "");
+  hint.classList.toggle("over", len > MAX_LEN);
+});
+
+document.querySelectorAll(".example").forEach((b) => {
+  b.addEventListener("click", () => {
+    q.value = b.textContent;
+    q.dispatchEvent(new Event("input"));
+    submitQuestion();
+  });
+});
+</script>
+</body>
+</html>

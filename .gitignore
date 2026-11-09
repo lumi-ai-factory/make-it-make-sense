@@ -1,0 +1,19 @@
+# Ahjo API keys and other secrets: never commit
+ahjo-key.txt
+.ahjo-key
+.env
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Logs, server PID files, exported OpenCode sessions, browser test profiles
+*.log
+server.pid
+session-*.md
+.chrometest/
+
+# OS clutter
+.DS_Store
+Thumbs.db

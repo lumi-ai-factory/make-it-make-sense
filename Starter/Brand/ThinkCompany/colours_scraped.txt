@@ -1,0 +1,57 @@
+Most frequent CSS colours on https://www.thinkcompany.fi/ (count):
+  #fff  81
+  #191919  26
+  #000  25
+  #fcf296  18
+  #2e261e  18
+  #333  15
+  #ccc  14
+  #351c4f  12
+  #bfc4ab  11
+  #f5f5ec  10
+  #515750  10
+  #e65c17  9
+  #222  7
+  #f8f6f2  7
+  #3ff3b1  7
+  #262926  7
+  #fed300  6
+  #ddd  6
+  #b6adff  6
+  #1f39be  6
+
+Logo image URLs found:
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/603f7a7ab6966047e402f711_Helsinki%20Think%20Company%20Logo.png
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/60c2294d3ce1a6d50364e0c8_think%20logo%20white.png
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/60d22fd5ad8b8427b76a30dd_linkedin-icon-black.png
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/60d230edea65beaa36f4909a_Helsinki%20city%20logo%20white.png
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/60d2310be584d69832823b2b_University%20of%20Helsinki%20Logo%20White.png
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/615ad25f23d5dc8062868acd_think%20fund%20logo.png
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/615b1fb095a77f23e081671e_fund_final2.jpg
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/6186d4398ea18c9b801bc692_5.png
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/6218a0cc639ebac17965e443_kollaasi%20logo%20ruskea.png
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/621dd8b91fcd612d99c7a3b6_taideyliopisto%20logo.png
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/622b59880827f70086c2d871_helseed%20workshops%202022%20logo%20shadow.png
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/636b7a34cdb4eb0d5a644368_helsinki%20think%20company%20logo%20small.png
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/636b7c80519296af36432cd7_helsinki%20think%20company%20logo%20dark%20thumbnail.png
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/636cc4e0f20a6afb45f45b34_helsinki%20think%20company%20webclip-1.png
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/6398695e4e0b7d39af03db7f_think%20media%20logo%20red.png
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/63986a66d9d4a124b8f85fe1_think%20media%20logo%20red%20horizontal.png
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/644a98fb73029870544509fa_DecarbonHome_light-removebg-preview.png
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/6453a99041124d8169134571_nest%20logo.png
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/69241f28cbbf7ed3722fd1f5_helsinki%20think%20company%20logo%20pyo%CC%88rea%CC%88%20vektori.ai%20(3).png
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/699eed9f2d67282a383121df_2026%20logo.png
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/6a29750aabba5c5983359bdd_Y4-logo.png
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/6a32c26f04e5c6815f1cfa2e_friidu%20logo.png
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/6a32c41c1f0dfb6bf1db2dbc_mo%CC%88_logo-blue.png
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/6a32c74aa39379512bf1b76f_krash%20logo%20black.png
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/6a32c81b75611472f0e6bee5_j%C3%A4rkis%C3%A4rki%20logo.webp
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/6a32c9d367a7561c93eda6a0_femma%20planning%20logo%20black.png
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/6aabf058aa552b35fff8ccc1_website%20update%202026%20photos%20(1).png
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/6aabf4575da7992225e1052a_website%20update%202026%20photos%20(3).png
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/6aabf62d4bfb7d06f4e23ede_Miils%20logo%20(1).png
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/6aabf801d6eeb85c6ac2efdd_Artly%20Media%20logo.png
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/6aabf94c7d76f0749d21932f_Oppimo%20Oppimiskeskus%20logo.png
+  https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/6aabfa513e7b512883621520_Gutly%20logo%20(1).png
+  https://cdn.prod.website-files.com/6047587deb9d01d66d5a91c2/60be67aa2d0cbe6faf30ea82_mutiny%20logo.jpg
+  https://cdn.prod.website-files.com/6047587deb9d01d66d5a91c2/638a2623669af735e8755eaa_think%20media%20hero%20image%20board2023.jpg

@@ -1,0 +1,7 @@
+# secrets — the API key must never leave the server
+.env
+
+# python
+__pycache__/
+*.pyc
+.venv/
