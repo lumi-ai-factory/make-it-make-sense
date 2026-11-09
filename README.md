@@ -6,8 +6,9 @@ Monday 9 November, 17:00–20:00, Think Company, Exactum, Kumpula campus.
 
 ## The rules
 
-- **Build with Ahjo only.** Ahjo is LUMI AI Factory's inference platform. It runs open-weight models on European infrastructure. You can brainstorm with any tool you like, but the code has to be written by OpenCode running on Ahjo. Using other LLMs via API or subscriptions is not allowed as the point of the hackathon is to see how capable medium sized LLMs already are, and what we can already achieve using sovereign tools. 
+- **Build with Ahjo only.** Ahjo is LUMI AI Factory's inference platform. It runs open-weight models on-prem at CSC – IT Center for Science, the company responsible for connecting Finland to the internet, managing eduroam and running Finnish supercomputers including Roihu and LUMI. You can brainstorm with any tool and LLM you like, but the code has to be written by OpenCode running on Ahjo. Using other LLMs via API or subscriptions is not allowed as the point of the hackathon is to see how capable medium sized LLMs already are, and what we can already achieve using sovereign tools. 
 - **Your Ahjo API key is personal.** Don't share it or put it online. All keys are revoked after the event.
+- **Resources are limited.** Each individual Ahjo key has a token limit (ask Arthur to check you real time spending if you're curious). Within a team you can share all 3 keys you got if one runs out of budget. The billing is rudimentary and does not yet include prefix cached hits and long context get very expensive very fast.
 - **Extra points** for using LUMI AI Factory and Think Company branding: logos and colours.
 
 ## What's in this repo
@@ -16,7 +17,7 @@ Monday 9 November, 17:00–20:00, Think Company, Exactum, Kumpula campus.
 |---|---|
 | `Starter/` | Your workspace. Start OpenCode here. |
 | `Starter/opencode.json` | Connects OpenCode to Ahjo. You don't need to edit it. |
-| `Starter/AGENTS.md` | Instructions the agent reads automatically: container rules, port, Ahjo. |
+| `Starter/AGENTS.md` | Instructions the agent reads automatically: container rules, port, Ahjo. Don't change anything here |
 | `Starter/NOTES.md` | The agent's memory between sessions. It reads and updates this file itself. |
 | `Starter/Brand/` | Logos and colours of LUMI AI Factory and Think Company. |
 | `Starter/Corpus/` | Both organisations' websites scraped to Markdown (about 340 pages, English and Finnish). Good material for chatbots, quizzes, search and more. |
@@ -25,8 +26,8 @@ Monday 9 November, 17:00–20:00, Think Company, Exactum, Kumpula campus.
 ### Examples
 
 - **AI Startup Idea Slot Machine** (`Examples/ai-slot-machine/`): spin the reels to get a random AI startup idea. A single HTML file; open it in your browser.
-- **Swipe the Startup, AI Act Edition** (`Examples/swipe-the-startup/`): swipe through startup ideas and guess how the EU AI Act treats them. A single HTML file.
-- **Two Guides, One Question** (`Examples/two-guides/`): a chatbot where a Think Company guide and a LUMI AI Factory guide each answer from their own website, using the corpus (RAG).
+- **Swipe the Startup, AI Act Edition** (`Examples/swipe-the-startup/`): swipe through startup ideas and guess how the EU AI Act treats them. A single HTML file; open it in your browser.
+- **Two Guides, One Question** (`Examples/two-guides/`): a chatbot where a Think Company guide and a LUMI AI Factory guide each answer from their own website, using the corpus (RAG). This example is very ambitious, probably too ambitious for the ~2h of the hackathon using the MoE Qwen3.6. Consider aiming for smaller projects. 
 
 ## Setup (about 5 minutes)
 
@@ -49,6 +50,8 @@ Without Git: on the GitHub page, click **Code → Download ZIP**, then unzip it.
 - **Linux:** `cd make-it-make-sense/Starter`
 
 You can also copy `Starter` somewhere else first, for example into the hackathon folder you made earlier, and use that copy.
+
+I couldn't test the instructions for Mac and Windows, so please let me (Arthur) know if something doesn't work and, if you know, how to fix it.
 
 ### 3. Save your Ahjo key
 
@@ -87,6 +90,8 @@ podman run -it --rm -p 127.0.0.1:8000:8000 -v opencode-data:/root/.local/share/o
 
 If you use Docker, write `docker` instead of `podman`.
 
+Note on the IP address: inside the container, the coding agent should use 0.0.0.0 for serving the web app. If **you** are starting the web app **outside** the container, use 127.0.0.1 instead to avoid opening the app to all devices connected to the same wi-fi network. This instruction is already in AGENTS.md, but the coding agent might not be very obedient. 
+
 **To continue where you left off** after closing OpenCode and its container, run the same command with ` -c` added at the very end. That reopens your last session. Or start it normally, type `/sessions` and pick the session you want.
 
 ### 5. Check that it works
@@ -96,7 +101,7 @@ At the bottom of the OpenCode screen you should see **Qwen3.6 35B A3B** and **Ah
 When the agent builds a web app, open **http://localhost:8000** in your browser.
 
 <details>
-<summary><b>New to OpenCode?</b> Read this</summary>
+<summary><b>New to OpenCode? Click here!</b></summary>
 
 Type `/` to see all commands.
 
@@ -104,12 +109,12 @@ Type `/` to see all commands.
 |---|---|
 | **Esc** twice | Stops the agent mid-answer, for example when it's going the wrong way or if it's stuck with a hanging command. |
 | **Tab** | Switches between **Build** (makes changes) and **Plan** (only discusses and plans, doesn't touch files). Plan is good for thinking an idea through first. |
-| `@` | Mentions a file, for example `@NOTES.md`, so the agent looks at it. |
+| `@` | Mentions a file, for example `@README.md`, so the agent looks at it. |
 | `/undo` | Takes back your last message and the file changes it caused. `/redo` brings them back. |
-| `/new` | Starts a fresh session. Useful when the agent gets confused: tell it what to do next and it starts with a clean head. |
+| `/new` | Starts a fresh session with empty context. Useful when the agent gets confused or if you notice context rot (outputs getting worse at long context). |
 | `/sessions` | Lists your earlier sessions so you can go back to one. |
 | `/compact` | Summarises a long session so it fits the model's memory again. OpenCode will do that automatically when you get close to the model's context size limit. |
-| `/models` | Switches the model. Qwen is the default. You can also pick **Nemotron 3.5 Lightning 30B A3B**: it's another model on Ahjo, with a much longer memory (1M tokens). |
+| `/models` | Switches the model. Qwen is the default. You can also pick **Nemotron 3.5 Lightning 30B A3B**: it's another model on Ahjo, with a much longer memory (1M tokens) and it's a bit faster, but a bit worse coding skills than Qwen. |
 | **Ctrl+P** | Opens the list of all commands. |
 | **Ctrl+C** or `/exit` | Quits OpenCode and closes the container. Your sessions and the files in your folder are kept, but anything the agent installed is gone. |
 
@@ -125,12 +130,13 @@ Type `/` to see all commands.
 
 ## Good to know
 
+- **Be mindful with the tokens**. Run /compact when the context grows large (and make use of NOTES.md!). If the agent is stuck trying to fix a bug for too long, consider opting for a simpler solution. Start /new sessions when switching to a brand new task that does not need any previous context. 
 - **The agent runs on full auto.** It edits files and runs commands without asking. That's safe because the container can only see the `Starter` folder (or your copy of it). It can't touch the rest of your laptop.
-- **Your files are saved on your laptop.** Quitting OpenCode (Ctrl+C) closes the container. Run the same command with ` -c` at the end to continue your last session (see step 4). Things the agent installed (Python, Node and so on) are deleted after a restart, so the agent needs to reinstall them after every restart. The agent also keeps notes in `NOTES.md` and reads them when it starts. Before you quit, say "update your notes".
+- **Your files are saved on your laptop.** Quitting OpenCode (Ctrl+C) closes the container. Run the same command with ` -c` at the end to continue your last session (see step 4). Things the agent installed (Python, Node and so on) are deleted after a restart, so the agent needs to reinstall them after every restart. Python packages in `.venv` survive. The agent also keeps notes in `NOTES.md` and reads them when it starts. Remind the agent to use notes after important decisions or changes. 
 - **Back up your folder regularly**. In your file manager, copy the whole folder to somewhere else on your computer as a backup. The copy is outside the container, so even a confused agent can't delete it.
-- **Work in small steps.** Describe what you want, let the agent build a small version, try it in the browser, then ask for the next change. Tell the agent exactly what's wrong ("the button does nothing", "the text is unreadable on mobile").
+- **Work in steps.** Describe what you want, let the agent build a small version, try it in the browser, then ask for the next change. Tell the agent exactly what's wrong ("the button does nothing", "the text is unreadable on mobile").
 - **Your team has one driver.** Split the tasks. Only one of you runs the agent, and the code gets written there. The other two have plenty to do at the same time:
-  - **Shape the idea:** decide what the app does and for whom, and draft the next prompt for the driver. You can brainstorm with any chatbot.
+  - **Shape the idea:** decide what the app does and for whom, and draft the next prompt for the driver. You can brainstorm with any chatbot. You may find or generate images using other LLMs (ChatGPT, Gemini, etc). 
   - **Write the content:** texts, quiz questions, game levels, example questions. Find good material in `Corpus/`.
   - **Test:** try the app on the driver's laptop and report exactly what's broken or confusing.
   - **Prepare the presentation:** slides, screenshots, and a 1-minute demo script that shows the best part first.
