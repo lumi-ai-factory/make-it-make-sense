@@ -8,7 +8,7 @@ Monday 9 November, 17:00–20:00, Think Company, Exactum, Kumpula campus.
 
 - **Build with Ahjo only.** Ahjo is LUMI AI Factory's inference platform. It runs open-weight models on-prem at CSC – IT Center for Science, the company that connected Finland to the internet in 1988, manages eduroam and runs Finnish supercomputers including Roihu and LUMI. You can brainstorm with any tool and LLM you like, but the code has to be written by OpenCode running on Ahjo. Using other LLMs via API or subscriptions is not allowed as the point of the hackathon is to see how capable medium sized LLMs already are, and what we can already achieve using sovereign tools. 
 - **Your team shares one Ahjo API key.** I (Arthur) send it to all three of you, and you can all use it at the same time. Never share it outside your team or put it online: a leaked key can be used up by strangers within minutes, and then your team is out of tokens. All keys are revoked after the event.
-- **Each key has a token budget.** When it's used up, the key stops working. If your team runs out, ask me, there's a **small** reserve for teams that need more (also ask me if you're curious about your real time spending). The billing is rudimentary and does not yet include prefix cached hits, so long context gets very expensive very fast.
+- **Each key has a token limit, and a token rate limit per minute.** If your team hits the token limit, ask me and I can raise it. Ask me too if you're curious about your real time spending.
 - **Don't run many subagents in parallel.** Ahjo can only generate so many tokens per minute, and that limit is shared by everyone at the hackathon. An agent that starts lots of subagents at once slows down Ahjo for all the other teams. One concurrent agent per person is plenty.
 - **Extra points** for using LUMI AI Factory and Think Company branding: logos and colours.
 
@@ -131,7 +131,7 @@ Type `/` to see all commands.
 
 ## Good to know
 
-- **Be mindful with the tokens**. Run /compact when the context grows large (and make use of NOTES.md!). If the agent is stuck trying to fix a bug for too long, consider opting for a simpler solution. Start /new sessions when switching to a brand new task that does not need any previous context. 
+- **Keep the context short.** The model gets worse as a session grows long. Run /compact when the context grows large (and make use of NOTES.md!). Start /new sessions when switching to a brand new task that does not need any previous context. If the agent is stuck trying to fix a bug for too long, consider opting for a simpler solution. 
 - **The agent runs on full auto.** It edits files and runs commands without asking. That's safe because the container can only see the `Starter` folder (or your copy of it). It can't touch the rest of your laptop.
 - **Your files are saved on your laptop.** Quitting OpenCode (Ctrl+C) closes the container. Run the same command with ` -c` at the end to continue your last session (see step 4). Things the agent installed (Python, Node and so on) are deleted after a restart, so the agent needs to reinstall them after every restart. Python packages in `.venv` survive. The agent also keeps notes in `NOTES.md` and reads them when it starts. Remind the agent to use notes after important decisions or changes. 
 - **Back up your folder regularly**. In your file manager, copy the whole folder to somewhere else on your computer as a backup. The copy is outside the container, so even a confused agent can't delete it.
