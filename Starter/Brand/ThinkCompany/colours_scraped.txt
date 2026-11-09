@@ -1,24 +1,12 @@
-Most frequent CSS colours on https://www.thinkcompany.fi/ (count):
-  #fff  81
-  #191919  26
-  #000  25
-  #fcf296  18
-  #2e261e  18
-  #333  15
-  #ccc  14
-  #351c4f  12
-  #bfc4ab  11
-  #f5f5ec  10
-  #515750  10
-  #e65c17  9
-  #222  7
-  #f8f6f2  7
-  #3ff3b1  7
-  #262926  7
-  #fed300  6
-  #ddd  6
-  #b6adff  6
-  #1f39be  6
+#ffffff
+#faf6f3
+#191919
+#fcf296
+#c1ffbf
+#e65c17
+#02473f
+#fcdee4
+#b6adff
 
 Logo image URLs found:
   https://cdn.prod.website-files.com/603cd28863f223f1b6883a4c/603f7a7ab6966047e402f711_Helsinki%20Think%20Company%20Logo.png
