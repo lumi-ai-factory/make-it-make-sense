@@ -6,9 +6,10 @@ Monday 9 November, 17:00–20:00, Think Company, Exactum, Kumpula campus.
 
 ## The rules
 
-- **Build with Ahjo only.** Ahjo is LUMI AI Factory's inference platform. It runs open-weight models on-prem at CSC – IT Center for Science, the company responsible for connecting Finland to the internet, managing eduroam and running Finnish supercomputers including Roihu and LUMI. You can brainstorm with any tool and LLM you like, but the code has to be written by OpenCode running on Ahjo. Using other LLMs via API or subscriptions is not allowed as the point of the hackathon is to see how capable medium sized LLMs already are, and what we can already achieve using sovereign tools. 
-- **Your Ahjo API key is personal.** Don't share it or put it online. All keys are revoked after the event.
-- **Resources are limited.** Each individual Ahjo key has a token limit (ask Arthur to check you real time spending if you're curious). Within a team you can share all 3 keys you got if one runs out of budget. The billing is rudimentary and does not yet include prefix cached hits and long context get very expensive very fast.
+- **Build with Ahjo only.** Ahjo is LUMI AI Factory's inference platform. It runs open-weight models on-prem at CSC – IT Center for Science, the company that connected Finland to the internet in 1988, manages eduroam and runs Finnish supercomputers including Roihu and LUMI. You can brainstorm with any tool and LLM you like, but the code has to be written by OpenCode running on Ahjo. Using other LLMs via API or subscriptions is not allowed as the point of the hackathon is to see how capable medium sized LLMs already are, and what we can already achieve using sovereign tools. 
+- **Your team shares one Ahjo API key.** I (Arthur) send it to all three of you, and you can all use it at the same time. Never share it outside your team or put it online: a leaked key can be used up by strangers within minutes, and then your team is out of tokens. All keys are revoked after the event.
+- **Each key has a token budget.** When it's used up, the key stops working. If your team runs out, ask me, there's a **small** reserve for teams that need more (also ask me if you're curious about your real time spending). The billing is rudimentary and does not yet include prefix cached hits, so long context gets very expensive very fast.
+- **Don't run many subagents in parallel.** Ahjo can only generate so many tokens per minute, and that limit is shared by everyone at the hackathon. An agent that starts lots of subagents at once slows down Ahjo for all the other teams. One concurrent agent per person is plenty.
 - **Extra points** for using LUMI AI Factory and Think Company branding: logos and colours.
 
 ## What's in this repo
@@ -51,11 +52,11 @@ Without Git: on the GitHub page, click **Code → Download ZIP**, then unzip it.
 
 You can also copy `Starter` somewhere else first, for example into the hackathon folder you made earlier, and use that copy.
 
-I couldn't test the instructions for Mac and Windows, so please let me (Arthur) know if something doesn't work and, if you know, how to fix it.
+I couldn't test the instructions for Mac and Windows, so please let me know if something doesn't work and, if you know, how to fix it.
 
 ### 3. Save your Ahjo key
 
-Create a file called `ahjo-key.txt` in the `Starter` folder that contains only your key. In the command below, **replace `YOUR_KEY` with the Ahjo key Arthur shared with you**. Keep the quotes.
+Create a file called `ahjo-key.txt` in the `Starter` folder that contains only your key. In the command below, **replace `YOUR_KEY` with the Ahjo key I sent you**. Keep the quotes.
 
 Mac and Linux:
 
@@ -135,7 +136,7 @@ Type `/` to see all commands.
 - **Your files are saved on your laptop.** Quitting OpenCode (Ctrl+C) closes the container. Run the same command with ` -c` at the end to continue your last session (see step 4). Things the agent installed (Python, Node and so on) are deleted after a restart, so the agent needs to reinstall them after every restart. Python packages in `.venv` survive. The agent also keeps notes in `NOTES.md` and reads them when it starts. Remind the agent to use notes after important decisions or changes. 
 - **Back up your folder regularly**. In your file manager, copy the whole folder to somewhere else on your computer as a backup. The copy is outside the container, so even a confused agent can't delete it.
 - **Work in steps.** Describe what you want, let the agent build a small version, try it in the browser, then ask for the next change. Tell the agent exactly what's wrong ("the button does nothing", "the text is unreadable on mobile").
-- **Your team has one driver.** Split the tasks. Only one of you runs the agent, and the code gets written there. The other two have plenty to do at the same time:
+- **Your team has one driver.** Split the tasks. One of you drives the agent and writes the code, while the other two have plenty to do at the same time:
   - **Shape the idea:** decide what the app does and for whom, and draft the next prompt for the driver. You can brainstorm with any chatbot. You may find or generate images using other LLMs (ChatGPT, Gemini, etc). 
   - **Write the content:** texts, quiz questions, game levels, example questions. Find good material in `Corpus/`.
   - **Test:** try the app on the driver's laptop and report exactly what's broken or confusing.
